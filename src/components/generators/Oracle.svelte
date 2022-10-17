@@ -1,6 +1,6 @@
-<script>
-    import { getRandomKeywords } from "../../lib/keywords";
-    import { Dice } from "../../lib/dice";
+<script lang="ts">
+import { getRandomKeywords } from "../../lib/keywords";
+import { Dice } from "../../lib/dice";
 
 
 const modifier = [
@@ -53,8 +53,8 @@ function reset() {
   question = '';
   roll = 0;
   ask = 0;
+  keywords = [];
 }
-
 </script>
 
 <div class="md:w-1/4 flex flex-col p-3 border m-3">
