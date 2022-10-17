@@ -9,12 +9,18 @@ $: count = 10;
 $: twidth = 30;
 $: wheight = width * twidth;
 $: lheight = length * twidth;
-
+$: hasEncounter = encounters.length !== 0;
 
 $: encounters = [];
 $: mapUrl = 'https://carver-sphere.just-us.net/images/travel-carver-sphere.jpg';
 
-$: console.log(encounters);
+function save() {
+  localStorage.setItem('encounters', JSON.stringify(encounters));
+  localStorage.setItem('width', width.toString());
+  localStorage.setItem('length', length.toString());
+  localStorage.setItem('count', count.toString());
+  localStorage.setItem('mapUrl', mapUrl);
+}
 
 function generate() {
   encounters = [];
@@ -26,18 +32,32 @@ function generate() {
   }
 }
 
+function clear() {
+  encounters = [];
+  width = 30;
+  length = 30;
+  count = 10;
+  mapUrl = 'https://carver-sphere.just-us.net/images/travel-carver-sphere.jpg';
+  save();
+}
+
 function randomCoordinate() {
   let w = Math.floor((Math.random() * 1000) % (width-2));
   let l = Math.floor((Math.random() * 1000) % (length-2));
 
-  console.log([w,l]);
   return [w,l];
 }
 
 onMount(() => {
-  generate();
+  encounters = JSON.parse(localStorage.getItem('encounters'));
+  if (!encounters) {
+    width = parseInt(localStorage.getItem('width'));
+    length = parseInt(localStorage.getItem('length'));
+    count = parseInt(localStorage.getItem('count'));
+    mapUrl = localStorage.getItem('mapUrl');
+    generate();
+  }
 });
-
 </script>
 
 <div class="md:w-3/4 flex flex-col p-3 border m-3">
@@ -58,7 +78,12 @@ onMount(() => {
     <span class="w-1/3">Map Url</span>
     <input bind:value={mapUrl} on:change={generate} class="border py-2 px-3 w-2/3 mb-2"/>
   </label>
-  <button class="py-2 px-3 mb-2" on:click={generate}>Regenerate</button>
+  <div>
+    <button class="border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800" on:click={generate}>Regenerate</button>
+    <button class="border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800 {`${!hasEncounter?'disabled text-purple-400 border-purple-400 cursor-not-allowed':''}`}" on:click={save} disabled={!hasEncounter}>Save</button>
+    <button class="border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800" on:click={clear}>Clear</button>
+  </div>
+
 
   {#if encounters}
   <h3 class="text-2xl font-bold text-center mb-3">Encounters</h3>
@@ -71,7 +96,6 @@ onMount(() => {
     {/each}
     {/each}
   </ul>
-
   {/if}
 
   <table width={wheight} height={lheight} class="text-white mx-auto border bg-origin-border bg-contain"  style={`background-image: url(${mapUrl})`}>
