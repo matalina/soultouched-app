@@ -57,7 +57,7 @@ function reset() {
 }
 </script>
 
-<div class="md:w-1/4 flex flex-col p-3 border m-3">
+<div class="md:full flex flex-col p-3 border m-3">
   <h2 class="text-3xl font-bold text-center mb-3">Oracle</h2>
   <form on:submit|preventDefault={getAnswer} class="flex flex-col">
     <label for="likelyhood">
