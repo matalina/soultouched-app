@@ -39,6 +39,7 @@ function clear() {
   count = 10;
   mapUrl = 'https://carver-sphere.just-us.net/images/travel-carver-sphere.jpg';
   save();
+  generate();
 }
 
 function randomCoordinate() {
@@ -50,11 +51,13 @@ function randomCoordinate() {
 
 onMount(() => {
   encounters = JSON.parse(localStorage.getItem('encounters'));
-  if (!encounters) {
+  if (encounters.length) {
     width = parseInt(localStorage.getItem('width'));
     length = parseInt(localStorage.getItem('length'));
     count = parseInt(localStorage.getItem('count'));
     mapUrl = localStorage.getItem('mapUrl');
+  }
+  else {
     generate();
   }
 });
@@ -85,18 +88,21 @@ onMount(() => {
   </div>
 
 
-  {#if encounters}
-  <h3 class="text-2xl font-bold text-center mb-3">Encounters</h3>
-  <ul class="flex justify-between flex-wrap mb-5">
-    {#each Array(width) as _,i}
-    {#each Array(length) as _,j}
-    {#if encounters?.[i]?.[j]}
-    <li>{`[${j+2},${i+2}]`}</li>
+  <div>
+    {#if encounters}
+    <h3 class="text-2xl font-bold text-center mb-3">Encounters</h3>
+    <ul class="flex justify-between flex-wrap mb-5">
+      {#each Array(width) as _,i}
+      {#each Array(length) as _,j}
+      {#if encounters?.[i]?.[j]}
+      <li>{`[${j+2},${i+2}]`}</li>
+      {/if}
+      {/each}
+      {/each}
+    </ul>
     {/if}
-    {/each}
-    {/each}
-  </ul>
-  {/if}
+  </div>
+
 
   <table width={wheight} height={lheight} class="text-white mx-auto border bg-origin-border bg-contain"  style={`background-image: url(${mapUrl})`}>
     <thead>
