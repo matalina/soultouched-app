@@ -3,7 +3,7 @@ import Calendar from './components/widgets/Calendar.svelte';
 import MapEncounters from "./components/generators/MapEncounters.svelte";
 import Oracle from "./components/generators/Oracle.svelte";
 import Today from "./components/widgets/Today.svelte";
-    import RealmDate from './components/generators/RealmDate.svelte';
+import RealmDate from './components/generators/RealmDate.svelte';
 
 </script>
 

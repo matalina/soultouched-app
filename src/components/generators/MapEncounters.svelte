@@ -6,13 +6,13 @@ $: width = 30;
 $: length = 30;
 $: count = 10;
 
+$: encounters = [];
+$: mapUrl = 'https://carver-sphere.just-us.net/images/travel-carver-sphere.jpg';
+
 $: twidth = 30;
 $: wheight = width * twidth;
 $: lheight = length * twidth;
 $: hasEncounter = encounters.length !== 0;
-
-$: encounters = [];
-$: mapUrl = 'https://carver-sphere.just-us.net/images/travel-carver-sphere.jpg';
 
 function save() {
   localStorage.setItem('encounters', JSON.stringify(encounters));
@@ -50,7 +50,7 @@ function randomCoordinate() {
 }
 
 onMount(() => {
-  encounters = JSON.parse(localStorage.getItem('encounters'));
+  encounters = JSON.parse(localStorage.getItem('encounters')) || [];
   if (encounters.length) {
     width = parseInt(localStorage.getItem('width'));
     length = parseInt(localStorage.getItem('length'));
