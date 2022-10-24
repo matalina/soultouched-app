@@ -22,7 +22,7 @@ $: data = today();
           class="text-center relative border"
           >
             <div class="p-0 m-0 text-xs">{(i*8)+j+1}</div>
-            <Moon moon={moonPhase((i*8)+j)} width={30}/>
+            <Moon moon={moonPhase((i*8)+j)} width={40}/>
           </td>
         {/each}
       </tr>

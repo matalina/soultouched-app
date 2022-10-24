@@ -86,7 +86,7 @@ function reset() {
     {/if}
   </div>
 
-  <button on:click={reset}>Reset</button>
+  <button on:click={reset} class="border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">Reset</button>
 </div>
 
 <style>

@@ -88,7 +88,7 @@ onMount(() => {
   </div>
 
 
-  <div>
+  <div class="h-fit">
     {#if encounters}
     <h3 class="text-2xl font-bold text-center mb-3">Encounters</h3>
     <ul class="flex justify-between flex-wrap mb-5">
@@ -118,9 +118,9 @@ onMount(() => {
       <tr>
         <th class="border">{(i+2).toString().padStart(2,'0')}</th>
         {#each Array(length-1) as _,j}
-        <td class="border text-center text-white font-bold {`w-{[px]`}">
+        <td class="border text-center text-red-700 font-bold {`w-{[px]`}">
           {#if encounters?.[i]?.[j]}
-          X
+           <span style="background-color: rgba(255,255,255,.4)" class="rounded-xl py-1 px-1" >X</span>
           {/if}
         </td>
         {/each}

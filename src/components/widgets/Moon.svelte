@@ -13,19 +13,19 @@ export let width;
 </script>
 
 {#if moon === 'F'}
-<img src={FM} alt="" {width} />
+<img src={FM} alt="" {width} class="m-0 p-0 w-full" />
 {:else if moon === 'WG'}
-<img src={WG} alt="" {width} />
+<img src={WG} alt="" {width} class="m-0 p-0 w-full" />
 {:else if moon === 'LQ'}
-<img src={LH} alt="" {width} />
+<img src={LH} alt="" {width} class="m-0 p-0 w-full" />
 {:else if moon === 'WC'}
-<img src={WC} alt="" {width} />
+<img src={WC} alt="" {width} class="m-0 p-0 w-full" />
 {:else if moon === 'N'}
-<img src={NM} alt="" {width} />
+<img src={NM} alt="" {width} class="m-0 p-0 w-full" />
 {:else if moon === 'WxC'}
-<img src={WxC} alt="" {width} />
+<img src={WxC} alt="" {width} class="m-0 p-0 w-full" />
 {:else if moon === 'FQ'}
-<img src={FH} alt="" {width} />
+<img src={FH} alt="" {width} class="m-0 p-0 w-full" />
 {:else if moon === 'WxG'}
-<img src={WxG} alt="" {width} />
+<img src={WxG} alt="" {width} class="m-0 p-0 w-full" />
 {/if}
