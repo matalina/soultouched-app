@@ -7,6 +7,7 @@
   import Keywords from './components/generators/Keywords.svelte';
   import Campaign from './components/generators/Campaign.svelte';
   import { onMount } from 'svelte';
+    import DiceRoller from './components/generators/DiceRoller.svelte';
 
   let tab = "random";
 
@@ -26,7 +27,7 @@
     <div class="mx-auto md:w-1/4">
       <Oracle />
       <Keywords />
-
+      <DiceRoller />
     </div>
   </main>
 
