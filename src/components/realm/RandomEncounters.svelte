@@ -1,6 +1,6 @@
 <script type="ts">
 import { onMount } from "svelte";
-import { maps } from '../../lib/maps';
+import { maps } from '../pages/maps';
 
 $: width = maps[map].width;
 $: length = maps[map].length;

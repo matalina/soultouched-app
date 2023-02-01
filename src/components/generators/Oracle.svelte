@@ -1,16 +1,15 @@
 <script lang="ts">
 import { getRandomKeywords } from "../../lib/keywords";
-import { Dice } from "../../lib/dice";
-
+import { DiceRoll } from '@dice-roller/rpg-dice-roller';
 
 const modifier = [
-  { likelihood: 'impossible', mod: -8 },
-  { likelihood: 'highly unlikely', mod: -5 },
-  { likelihood: 'unlikely', mod: -3 },
-  { likelihood: 'possible', mod: 0 },
-  { likelihood: 'likely', mod: +3 },
-  { likelihood: 'highly likely', mod: +5 },
-  { likelihood: 'a certainty', mod: +8 },
+  { likelihood: 'impossible', mod: '-8' },
+  { likelihood: 'highly unlikely', mod: '-5' },
+  { likelihood: 'unlikely', mod: '-3' },
+  { likelihood: 'possible', mod: '+0' },
+  { likelihood: 'likely', mod: '+3' },
+  { likelihood: 'highly likely', mod: '+5' },
+  { likelihood: 'a certainty', mod: '+8' },
 ];
 
 const oracle = [
@@ -26,15 +25,16 @@ const oracle = [
 $: question = '';
 $: likelihood = 3;
 $: answer = '';
-$: roll = 0;
-$: ask = 0;
+let roll;
+let ask;
 $: isAndOrBut = answer.includes('and') || answer.includes('but');
 $: keywords = [];
 
 function getAnswer() {
-  const die = new Dice();
-  roll = die.roll().add();
-  ask = roll + modifier[likelihood].mod;
+  const mod =  modifier[likelihood].mod;
+  const notation = `1d20${mod}`;
+  roll = new DiceRoll(notation);
+  ask = roll.total;
   if (ask < 0) return 'No, and';
   if (ask > 20) return 'Yes, and';
   for (let i in oracle) {
@@ -75,8 +75,9 @@ function reset() {
   <div class="justify-center w-full">
     {#if answer !== ''}
     <div class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-      <small class="text-xs text-blue-500">({roll} + {modifier[likelihood].mod} = {ask})</small>
-      {question}: {answer}
+      <em><strong>Q:</strong> {question}</em><br/>
+      <small class="text-xs text-blue-500">({roll.output})</small><br/>
+      <strong>{answer}</strong>
       {#if isAndOrBut}
         {JSON.stringify(keywords)}
       {/if}

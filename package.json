@@ -28,6 +28,7 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
-    "@dice-roller/rpg-dice-roller": "^5.2.1"
+    "@dice-roller/rpg-dice-roller": "^5.2.1",
+    "svelte-routing": "^1.6.0"
   }
 }

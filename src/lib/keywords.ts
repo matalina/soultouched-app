@@ -1,5 +1,3 @@
-import { Dice } from "./dice";
-
 const keywords = [
   'Turgid',
   'Decayed',
@@ -814,7 +812,6 @@ export function getRandomKeywords(number = 3) {
 }
 
 function getRandomWord() {
-  const die = new Dice(keywords.length, 1);
-  const index = die.roll().add();
+  const index = (Math.floor(Math.random() * keywords.length) % keywords.length) + 1
   return keywords[index];
 }
