@@ -22,15 +22,18 @@ const oracle = [
   [19, 20, 'Yes, and'],
 ];
 
-$: question = '';
-$: likelihood = 3;
-$: answer = '';
+let question = '';
+let oldQuestion = question;
+let likelihood = 3;
+let answer = '';
 let roll;
 let ask;
 $: isAndOrBut = answer.includes('and') || answer.includes('but');
-$: keywords = [];
+let keywords = [];
 
 function getAnswer() {
+  oldQuestion = question;
+  question = '';
   const mod =  modifier[likelihood].mod;
   const notation = `1d20${mod}`;
   roll = new DiceRoll(notation);
@@ -51,6 +54,7 @@ function reset() {
   likelihood = 3;
   answer = '';
   question = '';
+  oldQuestion = '';
   roll = 0;
   ask = 0;
   keywords = [];
@@ -61,7 +65,7 @@ function reset() {
   <h2 class="text-3xl font-bold text-center mb-3">Oracle</h2>
   <form on:submit|preventDefault={getAnswer} class="flex flex-col">
     <label for="likelyhood">
-      <select bind:value={likelihood} class="border py-2 px-3 w-full mb-2">
+      <select bind:value={likelihood} class="border py-2 px-3 w-full mb-2 capitalize">
         {#each modifier as mod, i}
         <option value={i}>{mod.likelihood}</option>
         {/each}
@@ -75,7 +79,7 @@ function reset() {
   <div class="justify-center w-full">
     {#if answer !== ''}
     <div class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-      <em><strong>Q:</strong> {question}</em><br/>
+      <em><strong>Q:</strong> {oldQuestion}</em><br/>
       <small class="text-xs text-blue-500">({roll.output})</small><br/>
       <strong>{answer}</strong>
       {#if isAndOrBut}
@@ -86,8 +90,10 @@ function reset() {
     <div class="py-2 px-3 mb-2">&nbsp;</div>
     {/if}
   </div>
-
-  <button on:click={reset} class="border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">Reset</button>
+  <div class="flex justify-center">
+    <button on:click={getAnswer} class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">Generate</button>
+    <button on:click={reset} class="border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">Reset</button>
+  </div>
 </div>
 
 <style>

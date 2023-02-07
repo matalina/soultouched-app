@@ -27,7 +27,7 @@
     <h2 class="text-3xl font-bold text-center mb-3">Roll the Bones!</h2>
     <input bind:value={notation} class="border py-2 px-3 w-full mb-2" />
     {#if result?.output}
-    <div class="w-full h-[3rem] bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
+    <div class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
         {result.output}
     </div>
     {:else}

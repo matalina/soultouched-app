@@ -812,6 +812,6 @@ export function getRandomKeywords(number = 3) {
 }
 
 function getRandomWord() {
-  const index = (Math.floor(Math.random() * keywords.length) % keywords.length) + 1
+  const index = (Math.floor(Math.random() * keywords.length) % keywords.length) + 1;
   return keywords[index];
 }
