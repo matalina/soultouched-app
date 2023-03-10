@@ -1,5 +1,6 @@
 <script type="ts">
-    import { getRandomKeywords } from '../../lib/keywords';
+import { getRandomKeywords } from '../../lib/keywords';
+import ToggleContent from '../ui/ToggleContent.svelte';
 
 
 let count;
@@ -10,9 +11,10 @@ function generate() {
 }
 </script>
 
-<div class="md:full flex flex-col p-3 border m-3">
+<ToggleContent>
+  <span slot="title">Keywords</span>
+
   <form on:submit|preventDefault={generate} class="flex flex-col">
-    <h2 class="text-3xl font-bold text-center mb-3">Keywords</h2>
     <input bind:this={count} class="border py-2 px-3 w-full mb-2" value="3"/>
     {#if keywords.length}
     <div class="w-full h-[3rem] bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
@@ -27,4 +29,4 @@ function generate() {
       </button>
     </div>
   </form>
-</div>
+</ToggleContent>

@@ -1,5 +1,6 @@
 <script lang="ts">
   import { DiceRoller } from '@dice-roller/rpg-dice-roller';
+    import ToggleContent from '../ui/ToggleContent.svelte';
 
   const roller = new DiceRoller();
   let notation = '1d20';
@@ -22,9 +23,11 @@
   }
 
 </script>
-<div class="md:full flex flex-col p-3 border m-3">
+
+<ToggleContent hide={false}>
+  <span slot="title">Roll the Bones!</span>
+
   <form on:submit|preventDefault={roll} class="flex flex-col">
-    <h2 class="text-3xl font-bold text-center mb-3">Roll the Bones!</h2>
     <input bind:value={notation} class="border py-2 px-3 w-full mb-2" />
     {#if result?.output}
     <div class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
@@ -55,4 +58,4 @@
 <div class="text-xs text-center">
   <a class="hover:text-purple-500" href="https://dice-roller.github.io/documentation/guide/notation/" target="_blank" rel="noreferrer">dice roll notation guide</a>
 </div>
-</div>
+</ToggleContent>

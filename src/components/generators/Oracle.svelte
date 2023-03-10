@@ -1,6 +1,7 @@
 <script lang="ts">
 import { getRandomKeywords } from "../../lib/keywords";
 import { DiceRoll } from '@dice-roller/rpg-dice-roller';
+import ToggleContent from "../ui/ToggleContent.svelte";
 
 const modifier = [
   { likelihood: 'impossible', mod: '-8' },
@@ -61,8 +62,9 @@ function reset() {
 }
 </script>
 
-<div class="md:full flex flex-col p-3 border m-3">
-  <h2 class="text-3xl font-bold text-center mb-3">Oracle</h2>
+<ToggleContent hide={false}>
+  <span slot="title">Oracle</span>
+
   <form on:submit|preventDefault={getAnswer} class="flex flex-col">
     <label for="likelyhood">
       <select bind:value={likelihood} class="border py-2 px-3 w-full mb-2 capitalize">
@@ -94,8 +96,4 @@ function reset() {
     <button on:click={getAnswer} class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">Generate</button>
     <button on:click={reset} class="border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">Reset</button>
   </div>
-</div>
-
-<style>
-
-</style>
+</ToggleContent>
