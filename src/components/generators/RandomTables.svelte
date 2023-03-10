@@ -1,6 +1,6 @@
 <script type="ts">
 import { DiceRoll } from '@dice-roller/rpg-dice-roller';
-import { creatureHealth, loot, nearbyLocationEven, nearbyLocationOdd, questTypes, RandomTable, shiftTable } from '../../lib/tables';
+import { creatureHealth, loot, manifestationCount, nearbyLocationEven, nearbyLocationOdd, questTypes, RandomTable, shiftTable } from '../../lib/tables';
 import ToggleContent from '../ui/ToggleContent.svelte';
 
 const options: { [key: string]: RandomTable } = {
@@ -10,6 +10,7 @@ const options: { [key: string]: RandomTable } = {
   [questTypes.name]: questTypes,
   [creatureHealth.name]: creatureHealth,
   [loot.name]: loot,
+  [manifestationCount.name]: manifestationCount,
 };
 
 let selectedTable = '';

@@ -139,3 +139,17 @@ export const creatureHealth: RandomTable = {
     { min: 6, max: 6, description: '50 pts' },
   ]
 };
+
+export const manifestationCount: RandomTable = {
+  name: 'Manifestation Count',
+  description: 'Random occurrences for manifestations upon each drift.',
+  diceFormula: '1d20',
+  table: [
+    { min: 1, max: 1, description: 'manifestation every hour' },
+    { min: 2, max: 12, description: '1 manifestation/day' },
+    { min: 13, max: 15, description: '2 per day' },
+    { min: 16, max: 18, description: '3 per day' },
+    { min: 19, max: 19, description: ' 1 manifestation entire stay' },
+    { min: 20, max: 20, description: 'No manifestations' },
+  ]
+};
