@@ -13,6 +13,9 @@ const modifier = [
   { likelihood: 'a certainty', mod: '+8' },
 ];
 
+let gmIntrusion = true;
+let isGMIntrusion = false;
+
 const oracle = [
   [1, 2, 'No, and'],
   [3, 7, 'No'],
@@ -33,13 +36,16 @@ $: isAndOrBut = answer.includes('and') || answer.includes('but');
 let keywords = [];
 
 function getAnswer() {
+  isGMIntrusion = false;
   oldQuestion = question;
   question = '';
   const mod =  modifier[likelihood].mod;
   const notation = `1d20${mod}`;
   roll = new DiceRoll(notation);
   ask = roll.total;
-  if (ask < 0) return 'No, and';
+  if (ask < 0) {
+    return 'No, and';
+  }
   if (ask > 20) return 'Yes, and';
   for (let i in oracle) {
     const range = oracle[i];
@@ -47,6 +53,12 @@ function getAnswer() {
   }
   if (answer.includes('and') || answer.includes('but')) {
     keywords = [...getRandomKeywords()];
+    if (gmIntrusion) {
+      const intrusion = new DiceRoll('1d20');
+      if (intrusion.total === 1 || intrusion.total === 20) {
+        isGMIntrusion = true;
+      }
+    }
   }
   return answer;
 }
@@ -59,6 +71,7 @@ function reset() {
   roll = 0;
   ask = 0;
   keywords = [];
+  isGMIntrusion = false;
 }
 </script>
 
@@ -73,6 +86,10 @@ function reset() {
         {/each}
       </select>
     </label>
+    <label for="intrusion" class="mb-2">
+      <input type="checkbox" id="intrusion" checked={gmIntrusion} on:click={() => gmIntrusion = !gmIntrusion }/>
+      <span>Use GM Intrusions?</span>
+    </label>
     <label for="question">
       <input type="text" id="question" bind:value={question} class="border py-2 px-3 w-full mb-2" />
     </label>
@@ -85,7 +102,10 @@ function reset() {
       <small class="text-xs text-blue-500">({roll.output})</small><br/>
       <strong>{answer}</strong>
       {#if isAndOrBut}
-        {JSON.stringify(keywords)}
+        {JSON.stringify(keywords).replaceAll(',', ', ')}<br/>
+        {#if isGMIntrusion}
+        <strong>GM Intrusion</strong>
+        {/if}
       {/if}
     </div>
     {:else}
