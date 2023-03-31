@@ -129,7 +129,7 @@ export const loot: RandomTable = {
 export const creatureHealth: RandomTable = {
   name: 'Creature Health',
   description: 'Randomly generated creature health plus level',
-  diceFormula: '1d20',
+  diceFormula: '1d6',
   table: [
     { min: 1, max: 1, description: '0 pts' },
     { min: 2, max: 2, description: '10 pts' },
@@ -153,3 +153,19 @@ export const manifestationCount: RandomTable = {
     { min: 20, max: 20, description: 'No manifestations' },
   ]
 };
+
+export const directionTable: RandomTable = {
+  name: 'Directions',
+  description: 'Determine random direction to go.',
+  diceFormula: '1d8',
+  table: [
+    { min: 1, max: 1, description: 'North' },
+    { min: 2, max: 2, description: 'North East' },
+    { min: 3, max: 3, description: 'East' },
+    { min: 4, max: 4, description: 'South East' },
+    { min: 5, max: 5, description: 'South' },
+    { min: 6, max: 6, description: 'South West' },
+    { min: 7, max: 7, description: 'West' },
+    { min: 8, max: 8, description: 'North West' },
+  ]
+}

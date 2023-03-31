@@ -1,6 +1,6 @@
 <script lang="ts">
   import { DiceRoller } from '@dice-roller/rpg-dice-roller';
-    import ToggleContent from '../ui/ToggleContent.svelte';
+  import ToggleContent from '../ui/ToggleContent.svelte';
 
   const roller = new DiceRoller();
   let notation = '1d20';
