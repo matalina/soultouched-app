@@ -3,9 +3,13 @@
   import ToggleContent from '../../ui/ToggleContent.svelte';
 
   let npc = '';
+  let level:undefined | number;
+  let selected = undefined;
 
   function generate() {
-    const level = (new DiceRoll('1d10')).total;;
+    level = selected;
+    if (!level)
+      level = (new DiceRoll('1d10')).total;;
     const hp = (new DiceRoll(`3 * ${level - 1} + 1d20`)).total;
     const damage = (new DiceRoll(`1d4 + ${level}`)).total;
 
@@ -17,6 +21,14 @@
 
 <ToggleContent>
   <span slot="title">Simple Cypher System NPC</span>
+  <label for="likelyhood">
+    <select bind:value={selected} class="border py-2 px-3 w-full mb-2 capitalize">
+      <option value={undefined}>Random</option>
+      {#each Array(10) as mod, i}
+      <option value={i+1}>Level {i+1}</option>
+      {/each}
+    </select>
+  </label>
   <div class="flex justify-center">
     <button
       on:click={generate}
