@@ -44,32 +44,32 @@
   let keywords = null;
 
   const developer = [
-    () => { keywords = getRandomKeywords(3); return 'Fail, And...';},
-    () => { keywords = getRandomKeywords(3); return 'Fail, And...';},
-    () => { keywords = getRandomKeywords(3); return 'Fail, And...';},
-    () => { keywords = getRandomKeywords(3); return 'Fail, And...';},
-    () => { keywords = getRandomKeywords(3); return 'Fail, But...';},
-    () => { keywords = getRandomKeywords(3); return 'Fail, But...';},
-    () => { keywords = getRandomKeywords(3); return 'Fail, But...';},
-    () => { keywords = getRandomKeywords(3); return 'Fail, But...';},
+    () => { keywords = getRandomKeywords(3); return '<strong>Fail, And...</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>Fail, And...</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>Fail, And...</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>Fail, And...</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>Fail, But...</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>Fail, But...</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>Fail, But...</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>Fail, But...</strong>';},
     randomCyphers,
     randomCyphers,
-    () => 'Automatic Success',
-    () => 'Automatic Failure',
-    () => { keywords = getRandomKeywords(3); return 'PC Inhibitor';},
-    () => { keywords = getRandomKeywords(3); return 'PC Inhibitor';},
-    () => { keywords = getRandomKeywords(3); return 'PC Enabler';},
-    () => { keywords = getRandomKeywords(3); return 'PC Enabler';},
-    () => { keywords = getRandomKeywords(3); return 'NPC Inhibitor';},
-    () => { keywords = getRandomKeywords(3); return 'NPC Inhibitor';},
-    () => { keywords = getRandomKeywords(3); return 'NPC Enabler';},
-    () => { keywords = getRandomKeywords(3); return 'NPC Enabler';},
+    () => '<strong>Automatic Success</strong>',
+    () => '<strong>Automatic Failure</strong>',
+    () => { keywords = getRandomKeywords(3); return '<strong>PC Inhibitor</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>PC Inhibitor</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>PC Enabler</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>PC Enabler</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>NPC Inhibitor</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>NPC Inhibitor</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>NPC Enabler</strong>';},
+    () => { keywords = getRandomKeywords(3); return '<strong>NPC Enabler</strong>';},
   ];
 
   function randomCyphers(): string {
     let roll = new DiceRoll('1d6');
     let cyphers = getRandomCyphers(roll.total);
-    let output = `Find 1d6 Cyphers<br/>`;
+    let output = `<strong>Find 1d6 Cyphers</strong><br/>`;
     output += `<small class="font-normal text-xs text-blue-500">${roll.output}</small><br/>`;
     output += `<ol class="list-decimal list-inside font-normal text-xs text-justify">`
     for(let i in cyphers) {
@@ -82,15 +82,15 @@
   function answerQuestion(value: number) {
     let  target = gamemaster[status].target;
     if (value - target > 0) {
-      return 'Success';
+      return '<strong>Success</strong>';
     }
     if (value - target === 0) {
       keywords = getRandomKeywords(3);
-      return 'GM Intrusion';
+      return '<strong>GM Intrusion</strong>';
     }
     let dev = new DiceRoll('1d20');
     const output = developer[dev.total - 1]();
-    return `Developer: ${output}<br/><small class="font-normal text-xs text-blue-500">(${dev.output})</small>`;
+    return `<strong>Developer:</strong> ${output}<br/><small class="font-normal text-xs text-blue-500">(${dev.output})</small>`;
   }
 
   function generate() {
@@ -128,7 +128,7 @@
     <div class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
       <em><strong>Q:</strong> {oldQuestion}</em><br/>
       <small class="text-xs text-blue-500">({roll.output})</small><br/>
-      <strong>{@html answer}</strong><br/>
+      {@html answer}<br/>
       {#if keywords}
         {JSON.stringify(keywords).replaceAll(',', ', ')}<br/>
       {/if}
