@@ -44,14 +44,14 @@
   let keywords = null;
 
   const developer = [
-    () => { keywords = getRandomKeywords(3); return 'And...';},
-    () => { keywords = getRandomKeywords(3); return 'And...';},
-    () => { keywords = getRandomKeywords(3); return 'But...';},
-    () => { keywords = getRandomKeywords(3); return 'But...';},
-    () => 'Introduce New Theme',
-    () => 'Retreat from Current Theme',
-    () => 'Increase Task Level',
-    () => 'Decrease Task Level',
+    () => { keywords = getRandomKeywords(3); return 'Fail, And...';},
+    () => { keywords = getRandomKeywords(3); return 'Fail, And...';},
+    () => { keywords = getRandomKeywords(3); return 'Fail, And...';},
+    () => { keywords = getRandomKeywords(3); return 'Fail, And...';},
+    () => { keywords = getRandomKeywords(3); return 'Fail, But...';},
+    () => { keywords = getRandomKeywords(3); return 'Fail, But...';},
+    () => { keywords = getRandomKeywords(3); return 'Fail, But...';},
+    () => { keywords = getRandomKeywords(3); return 'Fail, But...';},
     randomCyphers,
     randomCyphers,
     () => 'Automatic Success',
@@ -82,15 +82,15 @@
   function answerQuestion(value: number) {
     let  target = gamemaster[status].target;
     if (value - target > 0) {
-      return 'Yes';
+      return 'Success';
     }
     if (value - target === 0) {
       keywords = getRandomKeywords(3);
-      return 'Yes with GM Intrusion';
+      return 'GM Intrusion';
     }
     let dev = new DiceRoll('1d20');
     const output = developer[dev.total - 1]();
-    return `No: ${output}<br/><small class="font-normal text-xs text-blue-500">Developer: (${dev.output})</small>`;
+    return `Developer: ${output}<br/><small class="font-normal text-xs text-blue-500">(${dev.output})</small>`;
   }
 
   function generate() {
