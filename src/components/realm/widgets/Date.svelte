@@ -1,5 +1,5 @@
 <script type="ts">
-import { moons } from './../../lib/date-time';
+import { moons } from '../lib/date-time';
 import Moon from "./Moon.svelte";
 
 export let data;

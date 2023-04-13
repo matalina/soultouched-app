@@ -1,5 +1,5 @@
 <script type="ts">
-import { moonPhase, today, moons } from '../../lib/date-time';
+import { moonPhase, today, moons } from '../lib/date-time';
     import Moon from './Moon.svelte';
 
 $: data = today();

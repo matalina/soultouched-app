@@ -1,3 +1,5 @@
+import { getRandomItem, getRandomItems } from "./random";
+
 const keywords = [
   'Turgid',
   'Decayed',
@@ -800,18 +802,9 @@ const keywords = [
 ];
 
 export function getRandomKeywords(number = 3) {
-  const words = [];
-  for (let i = 0; i < number; i++) {
-    let word = getRandomWord();
-    while (words.includes(word)) {
-      word = getRandomWord();
-    }
-    words.push(word)
-  }
-  return words;
+  return getRandomItems(keywords, number);
 }
 
 function getRandomWord() {
-  const index = (Math.floor(Math.random() * keywords.length) % keywords.length) + 1;
-  return keywords[index];
+  return getRandomItem(keywords);
 }

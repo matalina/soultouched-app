@@ -1,6 +1,6 @@
 <script type="ts">
 import { onMount, tick } from 'svelte';
-import { today } from '../../lib/date-time';
+import { today } from '../lib/date-time';
 import DateComponent from './Date.svelte';
 
 $: data = today();

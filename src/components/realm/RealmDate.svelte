@@ -1,7 +1,7 @@
 <script type="ts">
 import { onMount } from 'svelte';
 import { getDate } from './lib/date-time';
-import DateComponent from '../widgets/Date.svelte';
+import DateComponent from './widgets/Date.svelte';
 
 
 let data = {};

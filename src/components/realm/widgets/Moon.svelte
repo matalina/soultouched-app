@@ -1,12 +1,12 @@
 <script type="ts">
-import FM from '../../assets/fm.png';
-import WC from '../../assets/wc.png';
-import WG from '../../assets/wg.png';
-import LH from '../../assets/lh.png';
-import NM from '../../assets/nm.png';
-import WxC from '../../assets/wxc.png';
-import WxG from '../../assets/wxg.png';
-import FH from '../../assets/fh.png';
+import FM from '../../../assets/fm.png';
+import WC from '../../../assets/wc.png';
+import WG from '../../../assets/wg.png';
+import LH from '../../../assets/lh.png';
+import NM from '../../../assets/nm.png';
+import WxC from '../../../assets/wxc.png';
+import WxG from '../../../assets/wxg.png';
+import FH from '../../../assets/fh.png';
 
 export let moon;
 export let width;
