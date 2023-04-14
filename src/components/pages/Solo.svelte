@@ -6,6 +6,7 @@ import Oracle from './../generators/Oracle.svelte';
   import GameMaster from "../generators/cypher/GameMaster.svelte";
   import Status from "../generators/cypher/Status.svelte";
   import Tasks from "../generators/cypher/Tasks.svelte";
+  import NPC from '../generators/NPC.svelte';
 </script>
 
 <main class="md:flex">
@@ -14,6 +15,7 @@ import Oracle from './../generators/Oracle.svelte';
     <Tasks />
     <DiceRoller />
     <CypherNpc />
+    <NPC />
     <Status />
     <RandomTables />
   </div>
