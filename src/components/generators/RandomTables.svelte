@@ -1,6 +1,6 @@
 <script type="ts">
 import { DiceRoll } from '@dice-roller/rpg-dice-roller';
-import { creatureHealth, loot, manifestationCount, nearbyLocationEven, nearbyLocationOdd, questTypes, RandomTable, shiftTable } from '../../lib/tables';
+import { creatureHealth, dispositionTable, loot, manifestationCount, nearbyLocationEven, nearbyLocationOdd, questTypes, RandomTable, shiftTable } from '../../lib/tables';
 import ToggleContent from '../ui/ToggleContent.svelte';
 
 const options: { [key: string]: RandomTable } = {
@@ -11,6 +11,7 @@ const options: { [key: string]: RandomTable } = {
   [creatureHealth.name]: creatureHealth,
   [loot.name]: loot,
   [manifestationCount.name]: manifestationCount,
+  [dispositionTable.name]: dispositionTable,
 };
 
 let selectedTable = '';
@@ -57,6 +58,20 @@ function rollOnTable() {
   {#if table}
   <h3 class="text-2xl font-bold text-center mb-3">{table.name}</h3>
   <p class="mb-3">{table.description}</p>
+  <div class="flex justify-center my-5">
+    <button
+      on:click={rollOnTable}
+      class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+    >Roll {table.diceFormula}</button>
+  </div>
+  {#if description}
+    <div class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
+      <small class="text-xs text-blue-500">({roll.output})</small><br/>
+      {description}
+    </div>
+  {:else}
+    <div class="py-2 px-3 mb-2">&nbsp;</div>
+  {/if}
   <table class="border">
     <thead>
       <tr><th colspan="2">{table.diceFormula}</th><th rowspan="2">Description</th></tr>
@@ -76,20 +91,6 @@ function rollOnTable() {
       {/each}
     </tbody>
   </table>
-  <div class="flex justify-center my-5">
-    <button
-      on:click={rollOnTable}
-      class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
-    >Roll {table.diceFormula}</button>
-  </div>
-  {#if description}
-    <div class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-      <small class="text-xs text-blue-500">({roll.output})</small><br/>
-      {description}
-    </div>
-  {:else}
-    <div class="py-2 px-3 mb-2">&nbsp;</div>
-  {/if}
   {/if}
 </ToggleContent>
 
