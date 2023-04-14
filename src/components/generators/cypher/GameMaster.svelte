@@ -105,7 +105,7 @@
 </script>
 
 
-<ToggleContent  hide={false}>
+<ToggleContent>
   <span slot="title">Chaos Game Master</span>
   <form class="flex justify-center flex-col" on:submit|preventDefault={generate}>
     <label for="likelyhood">

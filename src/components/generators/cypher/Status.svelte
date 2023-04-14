@@ -43,8 +43,8 @@
 </script>
 
 
-<ToggleContent  hide={false}>
-  <span slot="title">Chaos Adventure Status</span>
+<ToggleContent>
+  <span slot="title">Adventure Status</span>
   <div class="flex justify-center">
     <button
       on:click={generate}

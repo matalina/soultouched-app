@@ -20,7 +20,7 @@
 
 
 <ToggleContent>
-  <span slot="title">Simple Cypher System NPC</span>
+  <span slot="title">Base Cypher NPC</span>
   <label for="likelyhood">
     <select bind:value={selected} class="border py-2 px-3 w-full mb-2 capitalize">
       <option value={undefined}>Random</option>
