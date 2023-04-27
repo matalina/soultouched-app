@@ -215,4 +215,37 @@ export const dispositionTable: RandomTable = {
     { min: 96, max: 98, description: 'Frivolous' },
     { min: 99, max: 100, description: 'Disoriented' },
   ]
-}
+};
+export const ascendantSpecies: RandomTable = {
+  name: 'Ascendant Species',
+  description: 'A random species from the Ascendant',
+  diceFormula: '1d20',
+  table: [
+    { min: 1, max: 1, description: 'Bitten Therian' },
+    { min: 2, max: 2, description: 'Dragon' },
+    { min: 3, max: 3, description: 'Embraced Vampire' },
+    { min: 4, max: 13, description: 'Human' },
+    { min: 14, max: 14, description: 'Minorem' },
+    { min: 15, max: 15, description: 'Netherborn' },
+    { min: 16, max: 16, description: 'Path' },
+    { min: 17, max: 17, description: 'Primeval Vampire' },
+    { min: 18, max: 18, description: 'Sussuri Witch' },
+    { min: 19, max: 19, description: 'Therianborn' },
+    { min: 20, max: 20, description: 'Venatori' },
+  ]
+};
+
+
+export const bloodlines: RandomTable = {
+  name: 'Bloodlines',
+  description: 'Random Bloodlines',
+  diceFormula: '1d6',
+  table: [
+    { min: 1, max: 1, description: 'Animal Ken' },
+    { min: 2, max: 2, description: 'Domination' },
+    { min: 3, max: 3, description: 'Fear' },
+    { min: 4, max: 4, description: 'Lust/Desire' },
+    { min: 5, max: 5, description: 'Shadow' },
+    { min: 6, max: 6, description: 'Reroll' },
+  ]
+};
