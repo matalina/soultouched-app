@@ -1,6 +1,6 @@
 <script type="ts">
 import { DiceRoll } from '@dice-roller/rpg-dice-roller';
-import { ascendantSpecies, bloodlines, creatureHealth, dispositionTable, loot, manifestationCount, nearbyLocationEven, nearbyLocationOdd, questTypes, RandomTable, shiftTable } from '../../lib/tables';
+import { ascendantSpecies, bloodlines, creatureHealth, dispositionTable, loot, manifestationCount, mapConnections, nearbyLocationEven, nearbyLocationOdd, outerSpace, questTypes, RandomTable, shiftTable, urbanDistricts, wildness } from '../../lib/tables';
 import ToggleContent from '../ui/ToggleContent.svelte';
 
 const options: { [key: string]: RandomTable } = {
@@ -14,6 +14,10 @@ const options: { [key: string]: RandomTable } = {
   [dispositionTable.name]: dispositionTable,
   [ascendantSpecies.name]: ascendantSpecies,
   [bloodlines.name]: bloodlines,
+  [mapConnections.name]: mapConnections,
+  [urbanDistricts.name]: urbanDistricts,
+  [wildness.name]: wildness,
+  [outerSpace.name]: outerSpace,
 };
 
 let selectedTable = '';

@@ -249,3 +249,58 @@ export const bloodlines: RandomTable = {
     { min: 6, max: 6, description: 'Reroll' },
   ]
 };
+
+export const mapConnections: RandomTable = {
+  name: 'Map Connections',
+  description: 'Random map connections',
+  diceFormula: '1d6',
+  table: [
+    { min: 1, max: 2, description: 'Crossroads' },
+    { min: 3, max: 3, description: 'A T-intersection' },
+    { min: 4, max: 4, description: 'A Straightaway' },
+    { min: 5, max: 5, description: 'A curve/corner/turn' },
+    { min: 6, max: 6, description: 'Special' },
+  ]
+};
+
+export const wildness: RandomTable = {
+  name: 'Wilderness',
+  description: 'Random Wilderness areas',
+  diceFormula: '1d6',
+  table: [
+    { min: 1, max: 1, description: 'Plains' },
+    { min: 2, max: 2, description: 'Mountains' },
+    { min: 3, max: 3, description: 'Settlement' },
+    { min: 4, max: 4, description: 'Forest' },
+    { min: 5, max: 5, description: 'Swamp' },
+    { min: 6, max: 6, description: 'Special' },
+  ]
+};
+
+export const outerSpace: RandomTable = {
+  name: 'Outer Space',
+  description: 'Random outer space areas',
+  diceFormula: '1d6',
+  table: [
+    { min: 1, max: 1, description: 'Void' },
+    { min: 2, max: 2, description: 'Planet' },
+    { min: 3, max: 3, description: 'Star' },
+    { min: 4, max: 4, description: 'Moon' },
+    { min: 5, max: 5, description: 'Floater' },
+    { min: 6, max: 6, description: 'Special' },
+  ]
+};
+
+export const urbanDistricts: RandomTable = {
+  name: 'Urban Districts',
+  description: 'Random urban districts',
+  diceFormula: '1d6',
+  table: [
+    { min: 1, max: 1, description: 'Business District' },
+    { min: 2, max: 2, description: 'Residential District' },
+    { min: 3, max: 3, description: 'Marketplace' },
+    { min: 4, max: 4, description: 'Entertainment District' },
+    { min: 5, max: 5, description: 'Government District' },
+    { min: 6, max: 6, description: 'Special' },
+  ]
+};
