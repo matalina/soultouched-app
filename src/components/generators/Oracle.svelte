@@ -102,7 +102,7 @@ function reset() {
       <small class="text-xs text-blue-500">({roll.output})</small><br/>
       <strong>{answer}</strong>
       {#if isAndOrBut}
-        {JSON.stringify(keywords).replaceAll(',', ', ')}<br/>
+        {keywords.join(', ')}<br/>
         {#if isGMIntrusion}
         <strong>GM Intrusion</strong>
         {/if}

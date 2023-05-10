@@ -104,7 +104,7 @@
       <small class="text-xs text-blue-500">({roll.output})</small><br/>
       {@html answer}<br/>
       {#if keywords}
-        {JSON.stringify(keywords).replaceAll(',', ', ')}<br/>
+        {keywords.join(', ')}<br/>
       {/if}
     </div>
   {/if}

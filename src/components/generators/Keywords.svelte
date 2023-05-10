@@ -18,7 +18,7 @@ function generate() {
     <input bind:this={count} class="border py-2 px-3 w-full mb-2" value="3"/>
     {#if keywords.length}
     <div class="w-full h-[3rem] bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-        {JSON.stringify(keywords)}
+        {keywords.join(', ')}
     </div>
     {:else}
     <div class="py-2 px-3 mb-2">&nbsp;</div>

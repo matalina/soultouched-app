@@ -54,7 +54,7 @@
 
   {#if status}
     <div class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-      {statuses[status-1].status} ({statuses[status-1].target})<br/>
+      {statuses[status-1].status} {status} ({statuses[status-1].target})<br/>
       <em class="text-xs italic">{statuses[status-1].guidance}</em>
     </div>
   {/if}
