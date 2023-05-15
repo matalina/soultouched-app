@@ -304,3 +304,29 @@ export const urbanDistricts: RandomTable = {
     { min: 6, max: 6, description: 'Special' },
   ]
 };
+
+export const environmentFeatures: RandomTable = {
+  name: 'Environment Features',
+  description: 'Random environment features',
+  diceFormula: '1d12',
+  table: [
+    { min: 1, max: 4, description: 'Nothing Special' },
+    { min: 5, max: 10, description: '1 Feature' },
+    { min: 11, max: 11, description: '2 Features' },
+    { min: 12, max: 12, description: 'Trapped Feature' },
+  ]
+};
+
+export const weather: RandomTable = {
+  name: 'Weather',
+  description: 'Random weather',
+  diceFormula: '1d20',
+  table: [
+    { min: 1, max: 1, description: 'Cold' },
+    { min: 2, max: 4, description: 'Precipitation' },
+    { min: 5, max: 8, description: 'Overcast' },
+    { min: 9, max: 11, description: 'Clear' },
+    { min: 12, max: 18, description: 'Warm' },
+    { min: 19, max: 20, description: 'Hot' },
+  ]
+};
