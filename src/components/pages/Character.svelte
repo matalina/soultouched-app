@@ -1,9 +1,9 @@
 <script>
   import { createCanvas, loadImage } from 'canvas';
 
-  $: characters = JSON.parse(localStorage.getItem('characters')) | [];
+  $: characters = JSON.parse(localStorage.getItem('characters')) || [];
 
-  $: data = {
+  const emptyCharacter = {
     name: '',
     type: '',
     descriptor: '',
@@ -19,7 +19,10 @@
     recovery: [4, 0, false, false, false, false],
     damage: [true, false, false, false],
   };
-  let value = undefined;
+
+  $: data = {...emptyCharacter};
+
+  let value = -1;
   $: article = ['a', 'e', 'i', 'o', 'u'].includes(data?.descriptor[0])
     ? 'an'
     : 'a';
@@ -36,16 +39,42 @@
   const WIDTH = 500;
   const HEIGHT = 300;
 
-  function save() {
-    characters.push(data);
+  function deleteCharacter() {
+    characters[value] = undefined;
+    value = -1;
+    data = {...emptyCharacter};
+    characters = [...characters];
     localStorage.setItem('characters', JSON.stringify(characters));
   }
 
-  function getCharacter(index) {
-    data = characters[index];
+  function save() {
+    characters = [...characters, data];
+    localStorage.setItem('characters', JSON.stringify(characters));
+    value = characters.length -1;
+  }
+
+  function overwrite() {
+    characters[value] = {...data};
+    localStorage.setItem('characters', JSON.stringify(characters));
+  }
+
+  function clear() {
+    localStorage.removeItem('characters');
+    characters = [];
+  }
+
+  function clearData() {
+    data = {...emptyCharacter};
+    value = -1;
+  }
+
+  function getCharacter() {
+    if (value === -1) data = {...emptyCharacter};
+    data = characters[value];
   }
 
   async function generate() {
+    if (value !== -1) overwrite();
     const bg = await loadImage('./scroll.png');
 
     const canvas = createCanvas(WIDTH, HEIGHT);
@@ -143,8 +172,9 @@
             <span>Locally Saved Characters</span>
             <select
               id="select"
-              bind:value={data.name}
+              bind:value={value}
               class="border py-2 px-3 w-full mb-2"
+              on:change={getCharacter}
             >
               <option value="0">-- none --</option>
               {#each characters as value, i}
@@ -390,9 +420,24 @@
           >Generate</button
         >
         <button
+          on:click={clearData}
+          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+          >Clear Character Data</button
+        >
+        <button
           on:click={save}
           class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
           >Save Character Locally</button
+        >
+        <button
+          on:click={deleteCharacter}
+          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+          >Delete Character</button
+        >
+        <button
+          on:click={clear}
+          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+          >Clear All Saved Characters</button
         >
       </div>
 
