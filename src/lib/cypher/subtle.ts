@@ -1,3 +1,5 @@
+import { RandomTable, rollOnTable } from "../tables";
+
 export const subtleCyphers = [
   {
     name: 'Analeptic',
@@ -194,13 +196,76 @@ export const subtleCyphers = [
 ];
 
 function knowledgeEnhancement() {
-  return `For the next day, the character has training in a predetermined skill (or two skills if the cypher is level 5 or higher). The skill could be anything (including something specific to the operation of a particular device), or roll a d100 to choose a common skill. (391)`
+  const table: RandomTable = {
+    name: 'Random Cypher Table',
+    description: 'Random cypher table',
+    diceFormula: '1d100',
+    table: [
+      { min: 1, max: 10, description: 'Melee attacks' },
+      { min: 11, max: 20, description: 'Ranged attacks' },
+      {
+        min: 21,
+        max: 40,
+        description:
+          'One type of academic or esoteric lore (biology, history, magic, and so on)',
+      },
+      {
+        min: 41,
+        max: 50,
+        description: 'Repairing (sometimes specific to one device)',
+      },
+      { min: 51, max: 60, description: 'Crafting (usually specific to one thing)' },
+      { min: 61, max: 70, description: 'Persuasion' },
+      { min: 71, max: 75, description: 'Healing' },
+      { min: 76, max: 80, description: 'Speed Defense' },
+      { min: 81, max: 85, description: 'Intellect defense' },
+      { min: 86, max: 90, description: 'Swimming' },
+      { min: 91, max: 95, description: 'Riding' },
+      { min: 96, max: 100, description: 'Sneaking' },
+    ]
+  };
+  return `For the next day, the character has training in ${rollOnTable(table).description
+    } (and ${rollOnTable(table).description
+    } if the cypher is level 5 or higher). (391)`;
 }
 
 function rejuvenator() {
-  return `Restores a number of points equal to the cypher's level to one random stat Pool. (395)`;
+  const table: RandomTable = {
+    name: 'Random Cypher Table',
+    description: 'Random cypher table',
+    diceFormula: '1d100',
+    table: [
+      { min: 1, max: 50, description: 'Might Pool' },
+      { min: 51, max: 75, description: 'Speed Pool' },
+      { min: 76, max: 100, description: 'Intellect Pool' },
+    ]
+  };
+
+  return `Restores a number of points equal to the cypher's level to ${rollOnTable(table).description
+    }. (395) `;
 }
 
 function skillBoost() {
-  return `Dramatically but temporarily alters the user's mind and body so they can ease one specific kind of physical action by three steps. Once activated, this boost can be used a number of times equal to the cypher's level, but only within a twenty-four-hour period. The boost takes effect each time the action is performed. For example, a level 3 cypher boosts the first three times that action is attempted. Roll a d100 to determine the action. (397)`;
+  const table: RandomTable = {
+    name: 'Random Cypher Table',
+    description: 'Random cypher table',
+    diceFormula: '1d100',
+    table: [
+      { min: 1, max: 15, description: 'Melee attack' },
+      { min: 16, max: 30, description: 'Ranged attack' },
+      { min: 31, max: 40, description: 'Speed defense' },
+      { min: 41, max: 50, description: 'Might defense' },
+      { min: 41, max: 60, description: 'Intellect defense' },
+      { min: 61, max: 68, description: 'Jumping' },
+      { min: 69, max: 76, description: 'Climbing' },
+      { min: 77, max: 84, description: 'Running' },
+      { min: 85, max: 92, description: 'Swimming' },
+      { min: 93, max: 94, description: 'Sneaking' },
+      { min: 95, max: 96, description: 'Balancing' },
+      { min: 97, max: 98, description: 'Perceiving' },
+      { min: 99, max: 99, description: 'Carrying' },
+      { min: 100, max: 100, description: 'Escaping' },
+    ]
+  };
+  return `Dramatically but temporarily alters the user's mind and body so they can ease ${rollOnTable(table)} action by three steps. Once activated, this boost can be used a number of times equal to the cypher's level, but only within a twenty-four-hour period. The boost takes effect each time the action is performed. For example, a level 3 cypher boosts the first three times that action is attempted. (397)`;
 }

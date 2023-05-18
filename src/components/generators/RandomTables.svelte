@@ -1,6 +1,5 @@
 <script type="ts">
-import { DiceRoll } from '@dice-roller/rpg-dice-roller';
-import { ascendantSpecies, bloodlines, creatureHealth, dispositionTable, environmentFeatures, loot, manifestationCount, mapConnections, nearbyLocationEven, nearbyLocationOdd, outerSpace, questTypes, RandomTable, shiftTable, urbanDistricts, weather, wildness } from '../../lib/tables';
+import { rollOnTable, ascendantSpecies, bloodlines, creatureHealth, dispositionTable, environmentFeatures, loot, manifestationCount, mapConnections, nearbyLocationEven, nearbyLocationOdd, outerSpace, questTypes, RandomTable, shiftTable, urbanDistricts, weather, wildness } from '../../lib/tables';
 import ToggleContent from '../ui/ToggleContent.svelte';
 
 const options: { [key: string]: RandomTable } = {
@@ -35,16 +34,10 @@ function loadTable() {
   description = undefined;
 }
 
-function rollOnTable() {
-  roll = new DiceRoll(table.diceFormula);
-  total = roll.total;
-
-  for (let i in table.table) {
-    const row = table.table[i];
-    if (row.min === null && total <= row.max) description = row.description.toString();
-    else if (row.max === null && total >= row.min)description = row.description.toString();
-    else if (total >= row.min && total <= row.max) description = row.description.toString();
-  }
+function getRandom() {
+  const result = rollOnTable(table);
+  description = result.description;
+  roll = result.roll;
 }
 
 </script>
@@ -68,7 +61,7 @@ function rollOnTable() {
   <p class="mb-3">{table.description}</p>
   <div class="flex justify-center my-5">
     <button
-      on:click={rollOnTable}
+      on:click={getRandom}
       class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
     >Roll {table.diceFormula}</button>
   </div>

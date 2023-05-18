@@ -6,17 +6,17 @@
   import CypherNpc from '../generators/cypher/CypherNPC.svelte';
   import Tasks from '../generators/cypher/Tasks.svelte';
   import Status from '../generators/cypher/Status.svelte';
-  import Npc from '../generators/NPC.svelte';
+  import Cypher from '../generators/cypher/Cypher.svelte';
 </script>
 
 <main class="md:flex">
-  <div class="mx-auto md:w-1/4">
+  <div class="mx-auto w-full">
     <Oracle />
     <DiceRoller />
     <Tasks />
     <Status />
     <CypherNpc />
-    <Npc />
+    <Cypher />
     <RandomTables />
     <Keywords />
   </div>
