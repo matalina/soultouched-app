@@ -1,4 +1,8 @@
 <script>
+  import { createCanvas, loadImage } from 'canvas';
+
+  $: characters = JSON.parse(localStorage.getItem('characters')) | [];
+
   $: data = {
     name: '',
     type: '',
@@ -15,21 +19,114 @@
     recovery: [4, 0, false, false, false, false],
     damage: [true, false, false, false],
   };
-
+  let value = undefined;
   $: article = ['a', 'e', 'i', 'o', 'u'].includes(data?.descriptor[0])
     ? 'an'
     : 'a';
 
-  let url = undefined;
-  //const base = (new URL(location.href)).origin;
-  const base = 'https://generators.just-us.net';
-  function generate() {
-    url = undefined;
-    const dataString = JSON.stringify(data);
-    const encodedData = btoa(dataString);
-    url = `${base}/.netlify/functions/character-sheet/${encodeURIComponent(
-      encodedData
-    )}`;
+  let url = null;
+
+  function getArticle(descriptor) {
+    if (['a', 'e', 'i', 'o', 'u'].includes(descriptor[0])) {
+      return 'an';
+    }
+    return 'a';
+  }
+
+  const WIDTH = 500;
+  const HEIGHT = 300;
+
+  function save() {
+    characters.push(data);
+    localStorage.setItem('characters', JSON.stringify(characters));
+  }
+
+  function getCharacter(index) {
+    data = characters[index];
+  }
+
+  async function generate() {
+    const bg = await loadImage('./scroll.png');
+
+    const canvas = createCanvas(WIDTH, HEIGHT);
+    const ctx = canvas.getContext('2d');
+
+    ctx.drawImage(bg, 0, 0, WIDTH, HEIGHT);
+
+    let flavor = '';
+    if (data.flavor) flavor = `with ${data.flavor} `;
+
+    ctx.font = '24px "Satisfy"';
+    ctx.textAlign = 'center';
+    ctx.fillText(`${data.name}`, WIDTH / 2, 62);
+    ctx.fillText(
+      `is ${getArticle(data.descriptor)} ${data.descriptor} ${data.type}`,
+      WIDTH / 2,
+      90
+    );
+    ctx.fillText(`${flavor}who ${data.focus}`, WIDTH / 2, 118);
+
+    let LEFT = 130;
+    ctx.textAlign = 'right';
+    ctx.fillText('Tier:', LEFT, 166);
+    ctx.fillText('Effort:', LEFT, 194);
+    ctx.fillText('Armor:', LEFT, 222);
+    ctx.fillText('XP:', LEFT, 250);
+
+    LEFT = LEFT + 4;
+    ctx.textAlign = 'left';
+    ctx.fillText(data.tier.toString(), LEFT, 166);
+    ctx.fillText(data.effort.toString(), LEFT, 194);
+    ctx.fillText(data.armor.toString(), LEFT, 222);
+    ctx.fillText(data.xp.toString(), LEFT, 250);
+
+    let CENTER = 250 - 2;
+    ctx.textAlign = 'right';
+    ctx.fillText('Might:', CENTER, 166);
+    ctx.fillText('Speed:', CENTER, 194);
+    ctx.fillText('Intellect:', CENTER, 222);
+
+    CENTER = 250 + 2;
+    ctx.textAlign = 'left';
+    ctx.fillText(
+      `${data.might[0]}/${data.might[1]} (${data.might[2]})`,
+      CENTER,
+      166
+    );
+    ctx.fillText(
+      `${data.speed[0]}/${data.speed[1]} (${data.speed[2]})`,
+      CENTER,
+      194
+    );
+    ctx.fillText(
+      `${data.intellect[0]}/${data.intellect[1]} (${data.intellect[2]})`,
+      CENTER,
+      222
+    );
+
+    const RIGHT = 340;
+    const add = parseInt(data.recovery[1].toString()) + data.tier;
+    const recovery = parseInt(data.recovery[0].toString());
+    ctx.textAlign = 'left';
+    ctx.fillText(`Recovery: 1d6+${add}`, RIGHT, 166);
+    ctx.fillText('Damage Track', RIGHT, 222);
+    const SQUARE = 20;
+    let ROW = 177;
+    ctx.strokeStyle = 'black';
+    for (let i = 0; i < recovery; i++) {
+      ctx.strokeRect(RIGHT + i * (SQUARE + 4), ROW, SQUARE, SQUARE);
+      if (data.recovery[i + 2])
+        ctx.fillRect(RIGHT + i * (SQUARE + 4), ROW, SQUARE, SQUARE);
+    }
+    ROW = 234;
+    ctx.strokeStyle = 'black';
+    for (let i = 0; i < 4; i++) {
+      ctx.strokeRect(RIGHT + i * (SQUARE + 4), ROW, SQUARE, SQUARE);
+      if (data.damage[i])
+        ctx.fillRect(RIGHT + i * (SQUARE + 4), ROW, SQUARE, SQUARE);
+    }
+
+    url = canvas.toDataURL();
   }
 </script>
 
@@ -41,15 +138,31 @@
       </h2>
 
       <div class="border p-3 mb-3">
-        <label for="name">
-          <span>Name</span>
-          <input
-            type="text"
-            id="name"
-            bind:value={data.name}
-            class="border py-2 px-3 w-full mb-2"
-          />
-        </label>
+        <div class="flex">
+          <label for="saved" class="flex-grow mr-1">
+            <span>Locally Saved Characters</span>
+            <select
+              id="select"
+              bind:value={data.name}
+              class="border py-2 px-3 w-full mb-2"
+            >
+              <option value="0">-- none --</option>
+              {#each characters as value, i}
+                <option value={i}>{value.name}</option>
+              {/each}
+            </select>
+          </label>
+          <label for="name" class="flex-grow">
+            <span>Name</span>
+            <input
+              type="text"
+              id="name"
+              bind:value={data.name}
+              class="border py-2 px-3 w-full mb-2"
+            />
+          </label>
+        </div>
+
         <div class="flex w-full items-center">
           <div class="p-3 pl-0">is {article}</div>
           <label for="descriptor" class="flex-grow">
@@ -276,15 +389,15 @@
           class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
           >Generate</button
         >
+        <button
+          on:click={save}
+          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+          >Save Character Locally</button
+        >
       </div>
 
       {#if url}
         <div class="flex flex-col justify-center">
-          <div
-            class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2"
-          >
-            {url}
-          </div>
           <div class="flex justify-center">
             <img src={url} alt="" />
           </div>
@@ -293,3 +406,6 @@
     </div>
   </div>
 </div>
+
+<style>
+</style>

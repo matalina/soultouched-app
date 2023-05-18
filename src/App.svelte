@@ -3,7 +3,6 @@
   import Home from './components/pages/Home.svelte';
   import Disclaimer from './components/ui/Disclaimer.svelte';
   import Character from './components/pages/Character.svelte';
-  import { SvelteComponentDev } from 'svelte/internal';
 
   export let url = '';
 </script>
