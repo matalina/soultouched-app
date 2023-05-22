@@ -7,6 +7,7 @@
   import Tasks from '../generators/cypher/Tasks.svelte';
   import Status from '../generators/cypher/Status.svelte';
   import Cypher from '../generators/cypher/Cypher.svelte';
+  import Developer from '../generators/cypher/Developer.svelte';
 </script>
 
 <main class="md:flex">
@@ -14,6 +15,7 @@
     <Oracle />
     <DiceRoller />
     <Tasks />
+    <Developer />
     <Status />
     <CypherNpc />
     <Cypher />
