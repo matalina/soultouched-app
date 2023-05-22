@@ -267,5 +267,5 @@ function skillBoost() {
       { min: 100, max: 100, description: 'Escaping' },
     ]
   };
-  return `Dramatically but temporarily alters the user's mind and body so they can ease ${rollOnTable(table)} action by three steps. Once activated, this boost can be used a number of times equal to the cypher's level, but only within a twenty-four-hour period. The boost takes effect each time the action is performed. For example, a level 3 cypher boosts the first three times that action is attempted. (397)`;
+  return `Dramatically but temporarily alters the user's mind and body so they can ease ${rollOnTable(table).description} action by three steps. Once activated, this boost can be used a number of times equal to the cypher's level, but only within a twenty-four-hour period. The boost takes effect each time the action is performed. For example, a level 3 cypher boosts the first three times that action is attempted. (397)`;
 }
