@@ -7,16 +7,25 @@
   export let url = '';
 </script>
 
-<Router {url}>
-  <section>
-    <Route path="/" component={Home} />
-    <Route path="/character" component={Character} />
-  </section>
-  <nav>
-    <Link to="/">Home</Link> | <Link to="/character">Character Sheet</Link>
-  </nav>
-  <Disclaimer />
-</Router>
+<div id="app" class="md:w-96 mx-auto">
+  <Router {url}>
+    <section>
+      <Route path="/" component={Home} />
+      <Route path="/character" component={Character} />
+    </section>
+    <nav class="flex justify-center flex-wrap">
+      <Link
+        class="p-3 hover:text-purple-500 hover:underline focus:text-purple-500 focus:underline"
+        to="/">Home</Link
+      >
+      <Link
+        class="p-3 hover:text-purple-500 hover:underline focus:text-purple-500 focus:underline"
+        to="/character">Character Sheet</Link
+      >
+    </nav>
+    <Disclaimer />
+  </Router>
+</div>
 
 <style lang="postcss">
 </style>
