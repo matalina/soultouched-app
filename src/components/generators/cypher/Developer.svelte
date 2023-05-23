@@ -28,7 +28,6 @@
       class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2"
     >
       {@html developer}
-      <small class="text-xs text-blue-500">({roll.output})</small>
     </div>
   {/if}
 </ToggleContent>

@@ -36,7 +36,7 @@
     }
 
     const dev = getDeveloper();
-    return `${string}<br/>${dev}`;
+    return `${string}<br/>${dev.developer}`;
   }
 
   function generate() {
