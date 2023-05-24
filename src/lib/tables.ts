@@ -335,12 +335,13 @@ export const urbanDistricts: RandomTable = {
 export const environmentFeatures: RandomTable = {
   name: 'Environment Features',
   description: 'Random environment features',
-  diceFormula: '1d12',
+  diceFormula: '1d100',
   table: [
-    { min: 1, max: 4, description: 'Nothing Special' },
-    { min: 5, max: 10, description: '1 Feature' },
-    { min: 11, max: 11, description: '2 Features' },
-    { min: 12, max: 12, description: 'Trapped Feature' },
+    { min: 1, max: 70, description: 'Nothing Special, continuing terrain' },
+    { min: 71, max: 75, description: 'Water Feature' },
+    { min: 76, max: 90, description: 'Interesting Feature' },
+    { min: 91, max: 95, description: 'Unmarked Settlement' },
+    { min: 96, max: 100, description: 'Monster Lair' },
   ]
 };
 
