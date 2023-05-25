@@ -1,45 +1,63 @@
 <script type="ts">
-import { rollOnTable, ascendantSpecies, bloodlines, creatureHealth, dispositionTable, environmentFeatures, loot, manifestationCount, mapConnections, nearbyLocationEven, nearbyLocationOdd, outerSpace, questTypes, RandomTable, shiftTable, urbanDistricts, weather, wildness } from '../../lib/tables';
-import ToggleContent from '../ui/ToggleContent.svelte';
+  import {
+    rollOnTable,
+    ascendantSpecies,
+    bloodlines,
+    creatureHealth,
+    dispositionTable,
+    environmentFeatures,
+    loot,
+    manifestationCount,
+    mapConnections,
+    nearbyLocationEven,
+    nearbyLocationOdd,
+    outerSpace,
+    questTypes,
+    RandomTable,
+    shiftTable,
+    urbanDistricts,
+    weather,
+    wildness,
+  } from '../../lib/tables';
+  import ToggleContent from '../ui/ToggleContent.svelte';
 
-const options: { [key: string]: RandomTable } = {
-  [shiftTable.name]: shiftTable,
-  [nearbyLocationEven.name]: nearbyLocationEven,
-  [nearbyLocationOdd.name]: nearbyLocationOdd,
-  [questTypes.name]: questTypes,
-  [creatureHealth.name]: creatureHealth,
-  [loot.name]: loot,
-  [manifestationCount.name]: manifestationCount,
-  [dispositionTable.name]: dispositionTable,
-  [ascendantSpecies.name]: ascendantSpecies,
-  [bloodlines.name]: bloodlines,
-  [mapConnections.name]: mapConnections,
-  [urbanDistricts.name]: urbanDistricts,
-  [wildness.name]: wildness,
-  [outerSpace.name]: outerSpace,
-  [environmentFeatures.name]: environmentFeatures,
-  [weather.name]: weather,
-};
+  const options: { [key: string]: RandomTable } = {
+    [shiftTable.name]: shiftTable,
+    [nearbyLocationEven.name]: nearbyLocationEven,
+    [nearbyLocationOdd.name]: nearbyLocationOdd,
+    [questTypes.name]: questTypes,
+    [creatureHealth.name]: creatureHealth,
+    [loot.name]: loot,
+    [manifestationCount.name]: manifestationCount,
+    [dispositionTable.name]: dispositionTable,
+    [ascendantSpecies.name]: ascendantSpecies,
+    [bloodlines.name]: bloodlines,
+    [mapConnections.name]: mapConnections,
+    [urbanDistricts.name]: urbanDistricts,
+    [wildness.name]: wildness,
+    [outerSpace.name]: outerSpace,
+    [environmentFeatures.name]: environmentFeatures,
+    [weather.name]: weather,
+  };
 
-let selectedTable = '';
-let table: RandomTable;
-let total;
-let roll;
-let description;
+  let selectedTable = '';
+  let table: RandomTable;
+  let total;
+  let roll;
+  let description;
 
-function loadTable() {
-  table = options[selectedTable];
-  total = undefined;
-  roll = undefined;
-  description = undefined;
-}
+  function loadTable() {
+    table = options[selectedTable];
+    total = undefined;
+    roll = undefined;
+    description = undefined;
+  }
 
-function getRandom() {
-  const result = rollOnTable(table);
-  description = result.description;
-  roll = result.roll;
-}
-
+  function getRandom() {
+    const result = rollOnTable(table);
+    description = result.description;
+    roll = result.roll;
+  }
 </script>
 
 <ToggleContent>
@@ -57,46 +75,54 @@ function getRandom() {
   </select>
 
   {#if table}
-  <h3 class="text-2xl font-bold text-center mb-3">{table.name}</h3>
-  <p class="mb-3">{table.description}</p>
-  <div class="flex justify-center my-5">
-    <button
-      on:click={getRandom}
-      class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
-    >Roll {table.diceFormula}</button>
-  </div>
-  {#if description}
-    <div class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-      <small class="text-xs text-blue-500">({roll.output})</small><br/>
-      {description}
+    <h3 class="text-2xl font-bold text-center mb-3">{table.name}</h3>
+    <p class="mb-3">{table.description}</p>
+    <div class="flex justify-center my-5">
+      <button
+        on:click={getRandom}
+        class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+        >Roll {table.diceFormula}</button
+      >
     </div>
-  {:else}
-    <div class="py-2 px-3 mb-2">&nbsp;</div>
-  {/if}
-  <table class="border">
-    <thead>
-      <tr><th colspan="2">{table.diceFormula}</th><th rowspan="2">Description</th></tr>
-      <tr><th>Min</th><th>Max</th></tr>
-    </thead>
-    <tbody>
-      {#each table.table as row}
-        <tr>
-          {#if row.min === row.max}
-          <td colspan="2" class="text-center">{row.min}</td>
-          {:else}
-          <td class="text-center">{row.min}</td>
-          <td class="text-center">{row.max}</td>
-          {/if}
-          <td>{row.description}</td>
-        </tr>
-      {/each}
-    </tbody>
-  </table>
+    {#if description}
+      <div
+        class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2"
+      >
+        <small class="text-xs text-blue-500">({roll.output})</small><br />
+        {description}
+      </div>
+    {:else}
+      <div class="py-2 px-3 mb-2">&nbsp;</div>
+    {/if}
+    <table class="border">
+      <thead>
+        <tr
+          ><th colspan="2">{table.diceFormula}</th><th rowspan="2"
+            >Description</th
+          ></tr
+        >
+        <tr><th>Min</th><th>Max</th></tr>
+      </thead>
+      <tbody>
+        {#each table.table as row}
+          <tr>
+            {#if row.min === row.max}
+              <td colspan="2" class="text-center">{row.min}</td>
+            {:else}
+              <td class="text-center">{row.min}</td>
+              <td class="text-center">{row.max}</td>
+            {/if}
+            <td>{@html row.description}</td>
+          </tr>
+        {/each}
+      </tbody>
+    </table>
   {/if}
 </ToggleContent>
 
 <style lang="postcss">
-  td, th {
+  td,
+  th {
     @apply px-3 py-2 border;
   }
 </style>
