@@ -9,6 +9,7 @@
 </script>
 
 <div id="app" class="md:w-96 mx-auto">
+  <Version />
   <Router {url}>
     <section>
       <Route path="/" component={Home} />
@@ -25,7 +26,6 @@
       >
     </nav>
     <Disclaimer />
-    <Version />
   </Router>
 </div>
 

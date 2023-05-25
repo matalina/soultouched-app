@@ -31,6 +31,13 @@
 * fixed loot cypher description output
     `}
     />
+    <Markdown
+      small={true}
+      markdown={`
+#### 1.230525.04
+* moved version to top
+    `}
+    />
   </div>
 {/if}
 
