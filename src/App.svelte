@@ -3,6 +3,7 @@
   import Home from './components/pages/Home.svelte';
   import Disclaimer from './components/ui/Disclaimer.svelte';
   import Character from './components/pages/Character.svelte';
+  import Version from './components/ui/Version.svelte';
 
   export let url = '';
 </script>
@@ -24,6 +25,7 @@
       >
     </nav>
     <Disclaimer />
+    <Version />
   </Router>
 </div>
 
