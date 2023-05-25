@@ -8,7 +8,7 @@
     class="p-3 text-xs text-center text-gray-400 hover:text-purple-400"
     on:click={() => (open = !open)}
   >
-    version 1.230525.02
+    version 1.230525.04
   </button>
 </div>
 
