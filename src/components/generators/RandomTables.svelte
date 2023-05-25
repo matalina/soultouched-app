@@ -89,7 +89,7 @@
         class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2"
       >
         <small class="text-xs text-blue-500">({roll.output})</small><br />
-        {description}
+        {@html description}
       </div>
     {:else}
       <div class="py-2 px-3 mb-2">&nbsp;</div>

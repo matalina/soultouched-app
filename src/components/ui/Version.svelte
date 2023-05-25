@@ -24,6 +24,13 @@
 * added tailwind typography for easier formatting of text
     `}
     />
+    <Markdown
+      small={true}
+      markdown={`
+#### 1.230525.03
+* fixed loot cypher description output
+    `}
+    />
   </div>
 {/if}
 
