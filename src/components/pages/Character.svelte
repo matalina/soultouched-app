@@ -167,7 +167,7 @@
       </h2>
 
       <div class="border p-3 mb-3">
-        <div class="flex">
+        <div class="flex flex-col">
           <label for="saved" class="flex-grow mr-1">
             <span>Locally Saved Characters</span>
             <select
@@ -194,7 +194,7 @@
         </div>
 
         <div class="flex w-full items-center">
-          <div class="p-3 pl-0">is {article}</div>
+          <div class="p-3 pl-0 flex-shrink-0">is {article}</div>
           <label for="descriptor" class="flex-grow">
             <span>Descriptor</span>
             <input
@@ -203,7 +203,8 @@
               bind:value={data.descriptor}
               class="border py-2 px-3 w-full mb-2"
             />
-          </label>&nbsp;
+          </label>
+          </div>
           <label for="type" class="flex-grow">
             <span>Type</span>
             <input
@@ -213,7 +214,6 @@
               class="border py-2 px-3 w-full mb-2"
             />
           </label>
-        </div>
         <div class="flex items-center">
           <div class="p-3 pl-0">with</div>
           <label for="flavor" class="flex-grow">
@@ -225,6 +225,8 @@
               class="border py-2 px-3 w-full mb-2"
             />
           </label>
+        </div>
+        <div class="flex items-center">
           <div class="p-3">who</div>
           <label for="focus" class="flex-grow">
             <span>Focus</span>
@@ -238,7 +240,6 @@
         </div>
       </div>
 
-      <div class="flex">
         <div class="border p-3 mb-3 md:flex mr-1 flex-grow items-center">
           <label for="recovery">
             <span>Recovery (count)</span>
@@ -250,7 +251,7 @@
             />
           </label>
           <label for="extra">
-            <span>Recovery (extra points)</span>
+            <span>Recovery (xtra pts)</span>
             <input
               type="number"
               id="extra"
@@ -258,8 +259,10 @@
               class="border py-2 px-3 w-full mb-2"
             />
           </label>
+        </div>
+        <div class="border p-3 mb-3 md:flex mr-1 flex-grow items-center">
           <label for="taken" class="min-w-fit px-3">
-            <span class="md:inline block">Recovery (taken)</span>
+            <div>Recovery (taken)</div>
             {#each Array(data.recovery[0]) as value, i}
               <input
                 type="checkbox"
@@ -269,10 +272,8 @@
               />
             {/each}
           </label>
-        </div>
-        <div class="border p-3 mb-3 flex mr-1 flex-grow min-w-fit items-center">
           <label for="damage">
-            <span>Damage Track</span>
+            <div>Damage Track</div>
             {#each data.damage as value, i}
               <input
                 type="checkbox"
@@ -283,11 +284,9 @@
             {/each}
           </label>
         </div>
-      </div>
 
-      <div class="flex">
-        <div class="border p-3 mb-3 flex flex-col mr-1 flex-grow">
-          <label for="tier" class="w-full">
+        <div class="border p-3 mb-3 flex">
+          <label for="tier">
             <span>Tier</span>
             <input
               type="number"
@@ -296,7 +295,7 @@
               class="border py-2 px-3 w-full mb-2"
             />
           </label>&nbsp;
-          <label for="effort" class="w-full">
+          <label for="effort">
             <span>Effort</span>
             <input
               type="number"
@@ -305,7 +304,7 @@
               class="border py-2 px-3 w-full mb-2"
             />
           </label>&nbsp;
-          <label for="armor" class="w-full">
+          <label for="armor">
             <span>Armor</span>
             <input
               type="number"
@@ -314,7 +313,7 @@
               class="border py-2 px-3 w-full mb-2"
             />
           </label>&nbsp;
-          <label for="xp" class="w-full">
+          <label for="xp">
             <span>XP</span>
             <input
               type="number"
@@ -323,10 +322,15 @@
               class="border py-2 px-3 w-full mb-2"
             />
           </label>
-        </div>
+        </div>  
+      
+
+      <div class="flex">
         <div class="border p-3 mb-3 flex flex-col mr-1 flex-grow">
+          <div class="w-full text-center uppercase tracking-widestb border-b border-gray-900 
+           mb-2">Might</div>
           <label for="might0" class="w-full">
-            <span>Might (current)</span>
+            <span>Current</span>
             <input
               type="number"
               id="might0"
@@ -335,7 +339,7 @@
             />
           </label>&nbsp;
           <label for="might1" class="w-full">
-            <span>Might (pool)</span>
+            <span>Pool</span>
             <input
               type="number"
               id="might1"
@@ -344,7 +348,7 @@
             />
           </label>&nbsp;
           <label for="might2" class="w-full">
-            <span>Might (edge)</span>
+            <span>Edge</span>
             <input
               type="number"
               id="might2"
@@ -354,8 +358,10 @@
           </label>
         </div>
         <div class="border p-3 mb-3 flex flex-col mr-1 flex-grow">
+          <div class="w-full text-center uppercase tracking-widestb border-b border-gray-900 
+           mb-2">Speed</div>
           <label for="speed0" class="w-full">
-            <span>Speed (current)</span>
+            <span>Current</span>
             <input
               type="number"
               id="speed0"
@@ -364,7 +370,7 @@
             />
           </label>&nbsp;
           <label for="speed1" class="w-full">
-            <span>Speed (pool)</span>
+            <span>Pool</span>
             <input
               type="number"
               id="speed1"
@@ -373,7 +379,7 @@
             />
           </label>&nbsp;
           <label for="speed2" class="w-full">
-            <span>Speed (edge)</span>
+            <span>Edge</span>
             <input
               type="number"
               id="speed2"
@@ -383,8 +389,10 @@
           </label>
         </div>
         <div class="border p-3 mb-3 flex flex-col flex-grow">
+          <div class="w-full text-center uppercase tracking-widestb border-b border-gray-900 
+           mb-2">Intellect</div>
           <label for="intellect0" class="w-full">
-            <span>Intellect (current)</span>
+            <span>Current</span>
             <input
               type="number"
               id="intellect0"
@@ -393,7 +401,7 @@
             />
           </label>&nbsp;
           <label for="intellect1" class="w-full">
-            <span>Intellect (pool)</span>
+            <span>Pool</span>
             <input
               type="number"
               id="intellect1"
@@ -402,7 +410,7 @@
             />
           </label>&nbsp;
           <label for="intellect2" class="w-full">
-            <span>Intellect (edge)</span>
+            <span>Edge</span>
             <input
               type="number"
               id="intellect2"
@@ -413,7 +421,7 @@
         </div>
       </div>
 
-      <div class="flex justify-center">
+      <div class="flex flex-col justify-center">
         <button
           on:click={generate}
           class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
