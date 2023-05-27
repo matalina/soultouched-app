@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { generateTile, landTypes,  mapOptions } from '../../data/map';
-  import { map } from '../../lib/store';
+  import { generateTile, landTypes,  mapOptions } from '../../../data/map';
+  import { map } from '../../../lib/store';
 
   $: isNewMap = $map === null;
 

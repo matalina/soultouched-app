@@ -1,11 +1,11 @@
 <script>
-import Oracle from './../generators/Oracle.svelte';
-  import DiceRoller from "../generators/DiceRoller.svelte";
-  import RandomTables from "../generators/RandomTables.svelte";
-  import CypherNpc from "../generators/cypher/CypherNPC.svelte";
-  import GameMaster from "../generators/cypher/GameMaster.svelte";
-  import Status from "../generators/cypher/Status.svelte";
-  import Tasks from "../generators/cypher/Tasks.svelte";
+import Oracle from '../../generators/Oracle.svelte';
+  import DiceRoller from "../../generators/DiceRoller.svelte";
+  import RandomTables from "../../generators/RandomTables.svelte";
+  import CypherNpc from "../../generators/cypher/CypherNPC.svelte";
+  import GameMaster from "../../generators/cypher/GameMaster.svelte";
+  import Status from "../../generators/cypher/Status.svelte";
+  import Tasks from "../../generators/cypher/Tasks.svelte";
   import NPC from '../generators/NPC.svelte';
 </script>
 
