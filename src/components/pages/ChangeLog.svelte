@@ -43,4 +43,11 @@
 * Turned into installable PWA via vite plugin
   `}
   />
+  <Markdown
+  small={true}
+  markdown={`
+#### 1.230527.03
+* Updated Character sheet for narrow display
+  `}
+  />
 </div>

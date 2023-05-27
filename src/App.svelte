@@ -8,7 +8,6 @@
 
   export let url = '';
 
-  $: console.log(url);
 </script>
 
 <div id="app" class="md:w-96 mx-auto">
@@ -43,7 +42,7 @@
         class="text-xs text-gray-500 p-2"
         to="/change-log"
       >  
-        v1.230527.01
+        v1.230527.03
       </Link>
     </nav>
     <section>
