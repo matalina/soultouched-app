@@ -34,6 +34,13 @@
 * changed change log to page
 * added button menu to top of page
 * added combat page 
-`}
-/>
+  `}
+  />
+  <Markdown
+  small={true}
+  markdown={`
+#### 1.230527.02
+* Turned into installable PWA via vite plugin
+  `}
+  />
 </div>

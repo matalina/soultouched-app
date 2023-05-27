@@ -5,3 +5,5 @@
 .lh/
 # Local Netlify folder
 .netlify
+
+/dev-dist/
