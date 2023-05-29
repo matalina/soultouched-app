@@ -7,49 +7,45 @@
   import Combat from './components/pages/Combat.svelte';
 
   export let url = '';
-
 </script>
 
 <div id="app" class="md:w-96 mx-auto">
   <Router {url}>
     <nav class="flex items-center w-full p-3">
       <div class="flex-grow flex">
-        <Link
-          to ="/"
-        >
-          <div class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200">
-            <i class="fa-solid fa-house"></i>
+        <Link to="/">
+          <div
+            class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
+          >
+            <i class="fa-solid fa-house" />
           </div>
         </Link>
 
-        <Link
-          to ="/character"
-        >
-          <div class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200">
-            <i class="fa-solid fa-id-card"></i>
+        <Link to="/character">
+          <div
+            class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
+          >
+            <i class="fa-solid fa-id-card" />
           </div>
         </Link>
 
-        <Link
-          to ="/combat"
-        >
-          <div class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200">
-            <i class="fa-solid fa-swords"></i>
+        <Link to="/combat">
+          <div
+            class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
+          >
+            <i class="fa-solid fa-swords" />
           </div>
         </Link>
-      </div>  
-      <Link
-        class="text-xs text-gray-500 p-2"
-        to="/change-log"
-      >  
-        v1.230528.01
+      </div>
+      <Link class="text-xs text-gray-500 p-2" to="/change-log">
+        v1.230529.01
       </Link>
     </nav>
     <section>
       <Route path="/" component={Home} />
       <Route path="/character" component={Character} />
       <Route path="/change-log" component={ChangeLog} />
-      <Route path="/combat" component={Combat}/>
+      <Route path="/combat" component={Combat} />
     </section>
     <Disclaimer />
   </Router>

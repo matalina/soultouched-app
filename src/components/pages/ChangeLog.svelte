@@ -55,6 +55,8 @@
     markdown={`
 #### 1.230529.01
 * Added a Combat Tracker
+* Fixed delete character
+* Added update charater
   `}
   />
 </div>
