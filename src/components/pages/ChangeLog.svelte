@@ -50,4 +50,11 @@
 * Updated Character sheet for narrow display
   `}
   />
+  <Markdown
+  small={true}
+  markdown={`
+#### 1.230528.01
+* Added a Combat Tracker
+  `}
+  />
 </div>

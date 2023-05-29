@@ -42,7 +42,7 @@
         class="text-xs text-gray-500 p-2"
         to="/change-log"
       >  
-        v1.230527.03
+        v1.230528.01
       </Link>
     </nav>
     <section>
