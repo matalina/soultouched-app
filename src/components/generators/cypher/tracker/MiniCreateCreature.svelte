@@ -1,4 +1,18 @@
 <script>
+  import { createEventDispatcher } from 'svelte';
+
+  let dispatch = createEventDispatcher();
+
+  const emptyCreature = {
+    level: 1,
+    name: '',
+    hp: 0,
+    damage: 2,
+    movement: 'short',
+    combat: '',
+    interaction: '',
+  };
+
   let creature = {
     level: 1,
     name: '',
@@ -9,14 +23,18 @@
     interaction: '',
   };
 
-  let creatures = JSON.parse(sessionStorage.getItem('creatures')) || [];
+  let creatures = JSON.parse(localStorage.getItem('creatures')) || [];
 
   function saveCreature() {
     creatures.push(creature);
-    creatures = {...creatures};
-    sessionStorage.setItem('creatures', JSON.stringify(creatures));
+    creatures = [...creatures];
+    localStorage.setItem('creatures', JSON.stringify(creatures));
+    creature = emptyCreature;
+    dispatch('close-creature');
   }
-  
+  function close() {
+    dispatch('close-creature');
+  }
 </script>
 
 <div>
@@ -86,9 +104,17 @@
     {creature.interaction}
   </label>
   <div>
-    <button on:click={saveCreature}
-    class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">
+    <button
+      on:click={saveCreature}
+      class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+    >
       Save
+    </button>
+    <button
+      on:click={close}
+      class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+    >
+      Close
     </button>
   </div>
 </div>

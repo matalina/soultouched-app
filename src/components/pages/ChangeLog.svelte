@@ -1,5 +1,5 @@
 <script>
-  import Markdown from "../ui/Markdown.svelte";
+  import Markdown from '../ui/Markdown.svelte';
 </script>
 
 <div class="prose border p-3 mb-3 rounded-xl">
@@ -28,32 +28,32 @@
   `}
   />
   <Markdown
-  small={true}
-  markdown={`
+    small={true}
+    markdown={`
 #### 1.230527.01
 * changed change log to page
 * added button menu to top of page
-* added combat page 
+* added combat page
   `}
   />
   <Markdown
-  small={true}
-  markdown={`
+    small={true}
+    markdown={`
 #### 1.230527.02
 * Turned into installable PWA via vite plugin
   `}
   />
   <Markdown
-  small={true}
-  markdown={`
+    small={true}
+    markdown={`
 #### 1.230527.03
 * Updated Character sheet for narrow display
   `}
   />
   <Markdown
-  small={true}
-  markdown={`
-#### 1.230528.01
+    small={true}
+    markdown={`
+#### 1.230529.01
 * Added a Combat Tracker
   `}
   />

@@ -20,7 +20,7 @@
     damage: [true, false, false, false],
   };
 
-  $: data = {...emptyCharacter};
+  $: data = { ...emptyCharacter };
 
   let value = -1;
   $: article = ['a', 'e', 'i', 'o', 'u'].includes(data?.descriptor[0])
@@ -40,9 +40,9 @@
   const HEIGHT = 300;
 
   function deleteCharacter() {
-    characters[value] = undefined;
+    characters = characters.splice(value, 1);
     value = -1;
-    data = {...emptyCharacter};
+    data = { ...emptyCharacter };
     characters = [...characters];
     localStorage.setItem('characters', JSON.stringify(characters));
   }
@@ -50,11 +50,11 @@
   function save() {
     characters = [...characters, data];
     localStorage.setItem('characters', JSON.stringify(characters));
-    value = characters.length -1;
+    value = characters.length - 1;
   }
 
   function overwrite() {
-    characters[value] = {...data};
+    characters[value] = { ...data };
     localStorage.setItem('characters', JSON.stringify(characters));
   }
 
@@ -64,12 +64,12 @@
   }
 
   function clearData() {
-    data = {...emptyCharacter};
+    data = { ...emptyCharacter };
     value = -1;
   }
 
   function getCharacter() {
-    if (value === -1) data = {...emptyCharacter};
+    if (value === -1) data = { ...emptyCharacter };
     data = characters[value];
   }
 
@@ -172,7 +172,7 @@
             <span>Locally Saved Characters</span>
             <select
               id="select"
-              bind:value={value}
+              bind:value
               class="border py-2 px-3 w-full mb-2"
               on:change={getCharacter}
             >
@@ -204,16 +204,16 @@
               class="border py-2 px-3 w-full mb-2"
             />
           </label>
-          </div>
-          <label for="type" class="flex-grow">
-            <span>Type</span>
-            <input
-              type="text"
-              id="type"
-              bind:value={data.type}
-              class="border py-2 px-3 w-full mb-2"
-            />
-          </label>
+        </div>
+        <label for="type" class="flex-grow">
+          <span>Type</span>
+          <input
+            type="text"
+            id="type"
+            bind:value={data.type}
+            class="border py-2 px-3 w-full mb-2"
+          />
+        </label>
         <div class="flex items-center">
           <div class="p-3 pl-0">with</div>
           <label for="flavor" class="flex-grow">
@@ -240,95 +240,98 @@
         </div>
       </div>
 
-        <div class="border p-3 mb-3 md:flex mr-1 flex-grow items-center">
-          <label for="recovery">
-            <span>Recovery (count)</span>
+      <div class="border p-3 mb-3 md:flex mr-1 flex-grow items-center">
+        <label for="recovery">
+          <span>Recovery (count)</span>
+          <input
+            type="number"
+            id="recovery"
+            bind:value={data.recovery[0]}
+            class="border py-2 px-3 w-full mb-2"
+          />
+        </label>
+        <label for="extra">
+          <span>Recovery (xtra pts)</span>
+          <input
+            type="number"
+            id="extra"
+            bind:value={data.recovery[1]}
+            class="border py-2 px-3 w-full mb-2"
+          />
+        </label>
+      </div>
+      <div class="border p-3 mb-3 md:flex mr-1 flex-grow items-center">
+        <label for="taken" class="min-w-fit px-3">
+          <div>Recovery (taken)</div>
+          {#each Array(data.recovery[0]) as value, i}
             <input
-              type="number"
-              id="recovery"
-              bind:value={data.recovery[0]}
-              class="border py-2 px-3 w-full mb-2"
+              type="checkbox"
+              value={data.recovery[i + 2]}
+              checked={data.recovery[i + 2] ? true : undefined}
+              on:click={() => (data.recovery[i + 2] = !data.recovery[i + 2])}
             />
-          </label>
-          <label for="extra">
-            <span>Recovery (xtra pts)</span>
+          {/each}
+        </label>
+        <label for="damage">
+          <div>Damage Track</div>
+          {#each data.damage as value, i}
             <input
-              type="number"
-              id="extra"
-              bind:value={data.recovery[1]}
-              class="border py-2 px-3 w-full mb-2"
+              type="checkbox"
+              value={data.damage[i]}
+              checked={data.damage[i] ? true : undefined}
+              on:click={() => (data.damage[i] = !data.damage[i])}
             />
-          </label>
-        </div>
-        <div class="border p-3 mb-3 md:flex mr-1 flex-grow items-center">
-          <label for="taken" class="min-w-fit px-3">
-            <div>Recovery (taken)</div>
-            {#each Array(data.recovery[0]) as value, i}
-              <input
-                type="checkbox"
-                value={data.recovery[i + 2]}
-                checked={data.recovery[i + 2] ? true : undefined}
-                on:click={() => (data.recovery[i + 2] = !data.recovery[i + 2])}
-              />
-            {/each}
-          </label>
-          <label for="damage">
-            <div>Damage Track</div>
-            {#each data.damage as value, i}
-              <input
-                type="checkbox"
-                value={data.damage[i]}
-                checked={data.damage[i] ? true : undefined}
-                on:click={() => (data.damage[i] = !data.damage[i])}
-              />
-            {/each}
-          </label>
-        </div>
+          {/each}
+        </label>
+      </div>
 
-        <div class="border p-3 mb-3 flex">
-          <label for="tier">
-            <span>Tier</span>
-            <input
-              type="number"
-              id="tier"
-              bind:value={data.tier}
-              class="border py-2 px-3 w-full mb-2"
-            />
-          </label>&nbsp;
-          <label for="effort">
-            <span>Effort</span>
-            <input
-              type="number"
-              id="effort"
-              bind:value={data.effort}
-              class="border py-2 px-3 w-full mb-2"
-            />
-          </label>&nbsp;
-          <label for="armor">
-            <span>Armor</span>
-            <input
-              type="number"
-              id="armor"
-              bind:value={data.armor}
-              class="border py-2 px-3 w-full mb-2"
-            />
-          </label>&nbsp;
-          <label for="xp">
-            <span>XP</span>
-            <input
-              type="number"
-              id="xp"
-              bind:value={data.xp}
-              class="border py-2 px-3 w-full mb-2"
-            />
-          </label>
-        </div>  
-      
+      <div class="border p-3 mb-3 flex">
+        <label for="tier">
+          <span>Tier</span>
+          <input
+            type="number"
+            id="tier"
+            bind:value={data.tier}
+            class="border py-2 px-3 w-full mb-2"
+          />
+        </label>&nbsp;
+        <label for="effort">
+          <span>Effort</span>
+          <input
+            type="number"
+            id="effort"
+            bind:value={data.effort}
+            class="border py-2 px-3 w-full mb-2"
+          />
+        </label>&nbsp;
+        <label for="armor">
+          <span>Armor</span>
+          <input
+            type="number"
+            id="armor"
+            bind:value={data.armor}
+            class="border py-2 px-3 w-full mb-2"
+          />
+        </label>&nbsp;
+        <label for="xp">
+          <span>XP</span>
+          <input
+            type="number"
+            id="xp"
+            bind:value={data.xp}
+            class="border py-2 px-3 w-full mb-2"
+          />
+        </label>
+      </div>
 
       <div class="flex">
         <div class="border p-3 mb-3 flex flex-col mr-1 flex-grow">
-          <div class="w-full text-center uppercase tracking-widestb border-b border-gray-900 
-           mb-2">Might</div>
+          <div
+            class="w-full text-center uppercase tracking-widestb border-b border-gray-900
+           mb-2"
+          >
+            Might
+          </div>
           <label for="might0" class="w-full">
             <span>Current</span>
             <input
@@ -358,8 +361,12 @@
           </label>
         </div>
         <div class="border p-3 mb-3 flex flex-col mr-1 flex-grow">
-          <div class="w-full text-center uppercase tracking-widestb border-b border-gray-900 
-           mb-2">Speed</div>
+          <div
+            class="w-full text-center uppercase tracking-widestb border-b border-gray-900
+           mb-2"
+          >
+            Speed
+          </div>
           <label for="speed0" class="w-full">
             <span>Current</span>
             <input
@@ -389,8 +396,12 @@
           </label>
         </div>
         <div class="border p-3 mb-3 flex flex-col flex-grow">
-          <div class="w-full text-center uppercase tracking-widestb border-b border-gray-900 
-           mb-2">Intellect</div>
+          <div
+            class="w-full text-center uppercase tracking-widestb border-b border-gray-900
+           mb-2"
+          >
+            Intellect
+          </div>
           <label for="intellect0" class="w-full">
             <span>Current</span>
             <input
@@ -424,27 +435,36 @@
       <div class="flex flex-col justify-center">
         <button
           on:click={generate}
-          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
-          >Generate</button
+          class="border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+          >Generate Image</button
         >
-        <button
-          on:click={clearData}
-          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
-          >Clear Character Data</button
-        >
-        <button
-          on:click={save}
-          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
-          >Save Character Locally</button
-        >
-        <button
-          on:click={deleteCharacter}
-          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
-          >Delete Character</button
-        >
+        <div class="flex w-full">
+          <button
+            on:click={overwrite}
+            class="w-1/2 border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+            >Update Character</button
+          >
+          <button
+            on:click={deleteCharacter}
+            class="w-1/2 border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+            >Delete Character</button
+          >
+        </div>
+        <div class="flex w-full">
+          <button
+            on:click={clearData}
+            class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+            >Clear Data</button
+          >
+          <button
+            on:click={save}
+            class="flex-grow border py-2 px-3 mb-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+            >Save NEW Character Locally</button
+          >
+        </div>
         <button
           on:click={clear}
-          class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
+          class="w-full border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
           >Clear All Saved Characters</button
         >
       </div>
