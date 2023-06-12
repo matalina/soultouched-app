@@ -59,4 +59,11 @@
 * Added update charater
   `}
   />
+  <Markdown
+    small={true}
+    markdown={`
+#### 1.230612.01
+* Added pwa icons
+  `}
+  />
 </div>
