@@ -66,4 +66,11 @@
 * Added pwa icons
   `}
   />
+  <Markdown
+    small={true}
+    markdown={`
+#### 1.230628.01
+* Added playing card and tarot decks
+  `}
+  />
 </div>

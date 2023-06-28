@@ -38,7 +38,7 @@
         </Link>
       </div>
       <Link class="text-xs text-gray-500 p-2" to="/change-log">
-        v1.230612.01
+        v1.230628.01
       </Link>
     </nav>
     <section>

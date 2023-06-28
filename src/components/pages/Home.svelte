@@ -8,12 +8,14 @@
   import Status from '../generators/cypher/Status.svelte';
   import Cypher from '../generators/cypher/Cypher.svelte';
   import Developer from '../generators/cypher/Developer.svelte';
+  import Decks from '../generators/Decks.svelte';
 </script>
 
 <main class="md:flex">
   <div class="mx-auto w-full">
     <Oracle />
     <DiceRoller />
+    <Decks />
     <Tasks />
     <Developer />
     <Status />
