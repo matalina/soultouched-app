@@ -48,7 +48,7 @@ interface Cypher {
 
 export function printCypher(cypher: Cypher): string {
   const level = new DiceRoll(cypher.level).total;
-  return `<strong class="font-bold">L${level} ${cypher.name}:</strong> ${cypher.effect}`;
+  return `<strong class="font-bold">L${level} ${cypher.name}:</strong> ${cypher.effect} <small class="text-slate-600 uppercase text-[.6rem]">(${cypher.type})</small>`;
 }
 
 export function getAndPrintRandomCyphers(type = 'all') {

@@ -73,4 +73,12 @@
 * Added playing card and tarot decks
   `}
   />
+  <Markdown
+    small={true}
+    markdown={`
+#### 1.230713.01
+* Added type to cypher listings
+* Started fantastic cypher file (not implemented yet)
+  `}
+  />
 </div>
