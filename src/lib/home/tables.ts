@@ -64,6 +64,18 @@ export const bloodlines: RandomTable = {
   ]
 };
 
+export const elemental: RandomTable = {
+  name: 'Elemental',
+  description: 'A random element for elemental damage',
+  diceFormula: '1d4',
+  table: [
+    { min: 1, max: 1, description: 'fire' },
+    { min: 2, max: 2, description: 'earth' },
+    { min: 3, max: 3, description: 'air' },
+    { min: 4, max: 4, description: 'water' },
+  ]
+};
+
 export const chaosAura: RandomTable = {
   name: 'Chaos Aura',
   description: 'A random effect for the Chaos Aura',
@@ -88,17 +100,6 @@ export const chaosAura: RandomTable = {
     { min: 19, max: 19, description: 'Anyone within an short distance makes a free recovery roll' },
     { min: 20, max: 20, description: 'All Cyphers in an immediate distance randomly change' },
   ]
-};
-
-export const elemental: RandomTable = {
-  name: 'Elemental',
-  description: 'A random element for elemental damage',
-  diceFormula: '1d4',
-  table: [
-    { min: 1, max: 1, description: 'fire' },
-    { min: 2, max: 2, description: 'earth' },
-    { min: 3, max: 3, description: 'air' },
-    { min: 4, max: 4, description: 'water' },
 };
 
 function elementalDamage() {

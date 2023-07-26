@@ -1,5 +1,5 @@
 <script type="ts">
-  import { ascendantSpecies, bloodlines, chaosAura, manifestationCount, shiftTable } from 'src/lib/home/tables';
+  import { ascendantSpecies, bloodlines, chaosAura, elemental, manifestationCount, shiftTable } from '../../lib/home/tables';
   import {
     rollOnTable,
     creatureHealth,
@@ -15,6 +15,12 @@
     urbanDistricts,
     weather,
     wildness,
+    types,
+    descriptors,
+    focusVerb,
+    focusNoun,
+    creatures,
+    motivations,
   } from '../../lib/tables';
   import ToggleContent from '../ui/ToggleContent.svelte';
 
@@ -36,6 +42,13 @@
     [environmentFeatures.name]: environmentFeatures,
     [weather.name]: weather,
     [chaosAura.name]: chaosAura,
+    [elemental.name]: elemental,
+    [types.name]: types,
+    [descriptors.name]: descriptors,
+    [focusVerb.name]: focusVerb,
+    [focusNoun.name]:focusNoun,
+    [creatures.name]: creatures,
+    [motivations.name]: motivations,
   };
 
   let selectedTable = '';
