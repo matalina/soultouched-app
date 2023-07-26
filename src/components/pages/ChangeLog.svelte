@@ -81,4 +81,12 @@
 * Started fantastic cypher file (not implemented yet)
   `}
   />
+  <Markdown
+    small={true}
+    markdown={`
+#### 1.230726.01
+* Moved Homebrew tables to own location
+* Added Chaos Aura table
+  `}
+  />
 </div>

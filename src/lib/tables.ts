@@ -28,22 +28,6 @@ export interface MinMaxRow {
   description: string;
 }
 
-export const shiftTable: RandomTable = {
-  name: 'Shift Table',
-  description: 'Random determination of a shift',
-  diceFormula: '1d8',
-  table: [
-    { min: 1, max: 1, description: 'Purple (high magic/high tech)' },
-    { min: 2, max: 2, description: 'Magenta (high magic/no tech)' },
-    { min: 3, max: 3, description: 'Red (high magic, low tech)' },
-    { min: 4, max: 4, description: 'Orange (no magic, low tech)' },
-    { min: 5, max: 5, description: 'Yellow (low magic, low tech)' },
-    { min: 6, max: 6, description: 'Green (no magic, no tech)' },
-    { min: 7, max: 7, description: 'Cyan (low magic, high tech)' },
-    { min: 8, max: 8, description: 'Blue (no magic, high tech)' },
-  ]
-}
-
 export const nearbyLocationEven: RandomTable = {
   name: 'Nearby Location (Even)',
   description: 'Randomly generated locations when 1d4 is even.',
@@ -167,20 +151,6 @@ export const creatureHealth: RandomTable = {
   ]
 };
 
-export const manifestationCount: RandomTable = {
-  name: 'Manifestation Count',
-  description: 'Random occurrences for manifestations upon each drift.',
-  diceFormula: '1d20',
-  table: [
-    { min: 1, max: 1, description: 'manifestation every hour' },
-    { min: 2, max: 12, description: '1 manifestation/day' },
-    { min: 13, max: 15, description: '2 per day' },
-    { min: 16, max: 18, description: '3 per day' },
-    { min: 19, max: 19, description: ' 1 manifestation entire stay' },
-    { min: 20, max: 20, description: 'No manifestations' },
-  ]
-};
-
 export const directionTable: RandomTable = {
   name: 'Directions',
   description: 'Determine random direction to go.',
@@ -243,39 +213,9 @@ export const dispositionTable: RandomTable = {
     { min: 99, max: 100, description: 'Disoriented' },
   ]
 };
-export const ascendantSpecies: RandomTable = {
-  name: 'Ascendant Species',
-  description: 'A random species from the Ascendant',
-  diceFormula: '1d20',
-  table: [
-    { min: 1, max: 1, description: 'Bitten Therian' },
-    { min: 2, max: 2, description: 'Dragon' },
-    { min: 3, max: 3, description: 'Embraced Vampire' },
-    { min: 4, max: 13, description: 'Human' },
-    { min: 14, max: 14, description: 'Minorem' },
-    { min: 15, max: 15, description: 'Netherborn' },
-    { min: 16, max: 16, description: 'Path' },
-    { min: 17, max: 17, description: 'Primeval Vampire' },
-    { min: 18, max: 18, description: 'Sussuri Witch' },
-    { min: 19, max: 19, description: 'Therianborn' },
-    { min: 20, max: 20, description: 'Venatori' },
-  ]
-};
 
 
-export const bloodlines: RandomTable = {
-  name: 'Bloodlines',
-  description: 'Random Bloodlines',
-  diceFormula: '1d6',
-  table: [
-    { min: 1, max: 1, description: 'Animal Ken' },
-    { min: 2, max: 2, description: 'Domination' },
-    { min: 3, max: 3, description: 'Fear' },
-    { min: 4, max: 4, description: 'Lust/Desire' },
-    { min: 5, max: 5, description: 'Shadow' },
-    { min: 6, max: 6, description: 'Reroll' },
-  ]
-};
+
 
 export const mapConnections: RandomTable = {
   name: 'Map Connections',

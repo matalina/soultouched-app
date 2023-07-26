@@ -1,20 +1,17 @@
 <script type="ts">
+  import { ascendantSpecies, bloodlines, manifestationCount, shiftTable } from 'src/lib/home/tables';
   import {
     rollOnTable,
-    ascendantSpecies,
-    bloodlines,
     creatureHealth,
     dispositionTable,
     environmentFeatures,
     loot,
-    manifestationCount,
     mapConnections,
     nearbyLocationEven,
     nearbyLocationOdd,
     outerSpace,
     questTypes,
     RandomTable,
-    shiftTable,
     urbanDistricts,
     weather,
     wildness,
