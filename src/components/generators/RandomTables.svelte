@@ -1,5 +1,5 @@
 <script type="ts">
-  import { ascendantSpecies, bloodlines, manifestationCount, shiftTable } from 'src/lib/home/tables';
+  import { ascendantSpecies, bloodlines, chaosAura, manifestationCount, shiftTable } from 'src/lib/home/tables';
   import {
     rollOnTable,
     creatureHealth,
@@ -35,6 +35,7 @@
     [outerSpace.name]: outerSpace,
     [environmentFeatures.name]: environmentFeatures,
     [weather.name]: weather,
+    [chaosAura.name]: chaosAura,
   };
 
   let selectedTable = '';
