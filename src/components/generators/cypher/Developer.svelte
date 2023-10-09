@@ -24,7 +24,5 @@ import { getDeveloper } from '../../../lib/developer';
     >
   </div>
 
-  <Answer display={developer !== null}>
-    {@html developer}
-  </Answer>
+  <Answer answer={developer} />
 </ToggleContent>

@@ -104,10 +104,10 @@
         >Roll {table.diceFormula}</button
       >
     </div>
-    <Answer display={description}>
-        <small class="text-xs text-blue-500">({roll.output})</small><br />
-        {@html description}
-    </Answer>
+    {#if roll}
+    <Answer answer={`<small class="text-xs text-blue-500">(${roll.output})</small><br />
+        ${description}`} />
+    {/if}
     <table class="border">
       <thead>
         <tr

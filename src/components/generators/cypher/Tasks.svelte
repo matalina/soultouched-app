@@ -81,9 +81,9 @@
     </div>
   </form>
 
-  <Answer display={answer !== ''}>
-    <em><strong>Q:</strong> {oldQuestion} ({oldTarget})</em><br />
-    <small class="text-xs text-blue-500">({roll.output})</small><br />
-    {@html answer}
-  </Answer>
+  {#if answer}
+  <Answer answer={`<em><strong>Q:</strong> ${oldQuestion} (${oldTarget})</em><br />
+    <small class="text-xs text-blue-500">(${roll.output})</small><br />
+    ${answer}`}/>
+  {/if}
 </ToggleContent>

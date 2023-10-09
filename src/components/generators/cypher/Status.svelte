@@ -71,13 +71,12 @@
       class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800"
     >Generate</button>
   </div>
-
-  <Answer display={status !== null}>
-      <em class="text-xs italic">{statuses[status-1].guidance}</em><br/>
-      <strong>Adventure Status:</strong> {statuses[status-1].status} {status} ({statuses[status-1].target}) <span class="text-xs italic">{roll.output}</span><br/>
-      <strong>Date:</strong> {@html day.description} <span class="text-xs italic">{day.roll.output}</span> {@html time.description} <span class="text-xs italic">{time.roll.output}</span><br/>
-      <strong>Season:</strong> {@html seasons.description} <span class="text-xs italic">{seasons.roll.output}</span><br/>
-      <strong>Moon:</strong> {@html moon.description} <span class="text-xs italic">{moon.roll.output}</span> (Day {moonDay.total})<br/>
-      <strong>Weather:</strong> {@html weathers.description} <span class="text-xs italic">{weathers.roll.output}</span><br/>
-</Answer>
+  {#if status}
+  <Answer answer={`<em class="text-xs italic">${statuses[status-1].guidance}</em><br/>
+    <strong>Adventure Status:</strong> ${statuses[status-1].status} ${status} (${statuses[status-1].target}) <span class="text-xs italic">${roll.output}</span><br/>
+    <strong>Date:</strong> ${day.description} <span class="text-xs italic">${day.roll.output}</span> ${time.description} <span class="text-xs italic">${time.roll.output}</span><br/>
+    <strong>Season:</strong> ${seasons.description} <span class="text-xs italic">${seasons.roll.output}</span><br/>
+    <strong>Moon:</strong> ${moon.description} <span class="text-xs italic">${moon.roll.output}</span> (Day ${moonDay.total})<br/>
+    <strong>Weather:</strong> ${weathers.description} <span class="text-xs italic">${weathers.roll.output}</span><br/>`} />
+  {/if}
 </ToggleContent>

@@ -97,17 +97,13 @@ function reset() {
   </form>
 
   <div class="justify-center w-full">
-    <Answer display={answer !== ''}>
-      <em><strong>Q:</strong> {oldQuestion}</em><br/>
-      <small class="text-xs text-blue-500">({roll.output})</small><br/>
-      <strong>{answer}</strong>
-      {#if isAndOrBut}
-        {keywords.join(', ')}<br/>
-        {#if isGMIntrusion}
-        <strong>GM Intrusion</strong>
-        {/if}
-      {/if}
-    </Answer>
+    {#if answer}
+    <Answer answer={`<em><strong>Q:</strong> ${oldQuestion}</em><br/>
+      <small class="text-xs text-blue-500">(${roll.output})</small><br/>
+      <strong>${answer}</strong>
+      ${isAndOrBut ? `${keywords.join(', ')}<br/>`: ''}
+      ${isAndOrBut && isGMIntrusion ? `<strong>GM Intrusion</strong>`: ''}`} />
+    {/if}
   </div>
   <div class="flex justify-center">
     <button on:click={getAnswer} class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">Generate</button>

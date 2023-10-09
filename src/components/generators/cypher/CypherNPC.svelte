@@ -95,7 +95,5 @@
     >Generate</button>
   </div>
 
-  <Answer display={npc !== ''}>
-    {@html npc}
-  </Answer>
+  <Answer answer={npc} />
 </ToggleContent>

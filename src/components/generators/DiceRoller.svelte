@@ -30,9 +30,9 @@
 
   <form on:submit|preventDefault={roll} class="flex flex-col">
     <input bind:value={notation} class="border py-2 px-3 w-full mb-2" />
-    <Answer display={result?.output}>
-      {result.output}
-    </Answer>
+    {#if result}
+      <Answer answer={result.output}/>
+    {/if}
 
     {#if viewLog}
     <div class="w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">

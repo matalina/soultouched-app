@@ -52,14 +52,7 @@
   <button on:click={shuffleAll} class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">
     Reshuffle All
   </button>
-
-
-  <Answer display={card}>
-    {#if card.number !== ''}
-      {card.number} of {card.suit}
-    {:else}
-      {card.suit}
-    {/if}
-  </Answer>
-
+  {#if card}
+    <Answer answer={card.number !== '' ? `${card.number} of ${card.suit}` : card.suit }/>
+  {/if}
 </ToggleContent>

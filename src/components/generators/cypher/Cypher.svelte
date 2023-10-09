@@ -34,7 +34,5 @@
     >Generate</button>
   </div>
 
-  <Answer display={cypher !== ''}>
-      {@html cypher}
-  </Answer>
+  <Answer answer={cypher} />
 </ToggleContent>

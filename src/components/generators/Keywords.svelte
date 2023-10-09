@@ -22,9 +22,6 @@ function generate() {
         Generate
       </button>
     </div>
-    <Answer display={keywords.length > 0}>
-      {keywords.join(', ')}
-    </Answer>
-
+    <Answer answer={keywords.join(', ')} />
   </form>
 </ToggleContent>
