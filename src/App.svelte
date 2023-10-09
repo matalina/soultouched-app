@@ -21,31 +21,31 @@
           </div>
         </Link>
 
-        <Link to="/character">
+        <!--Link to="/character">
           <div
             class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
           >
             <i class="fa-solid fa-id-card" />
           </div>
-        </Link>
+        </!--Link>
 
-        <Link to="/combat">
+        <Link-- to="/combat">
           <div
             class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
           >
             <i class="fa-solid fa-swords" />
           </div>
-        </Link>
+        </Link-->
       </div>
       <Link class="text-xs text-gray-500 p-2" to="/change-log">
-        v1.230726.01
+        v1.231009.01
       </Link>
     </nav>
     <section>
       <Route path="/" component={Home} />
-      <Route path="/character" component={Character} />
+      <!--Route path="/character" component={Character} /-->
       <Route path="/change-log" component={ChangeLog} />
-      <Route path="/combat" component={Combat} />
+      <!--Route path="/combat" component={Combat} /-->
     </section>
     <Disclaimer />
   </Router>

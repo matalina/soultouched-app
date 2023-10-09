@@ -89,4 +89,12 @@
 * Added Chaos Aura table
   `}
   />
+  <Markdown
+    small={true}
+    markdown={`
+#### 1.231009.01
+* Updated Adventure status to generate more adventure information
+* Removed character gen and combat tracker
+  `}
+  />
 </div>
