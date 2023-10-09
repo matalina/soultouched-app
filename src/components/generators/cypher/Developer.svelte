@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Answer from 'src/components/ui/Answer.svelte';
+  import Answer from '../../ui/Answer.svelte';
 import { getDeveloper } from '../../../lib/developer';
   import ToggleContent from '../../ui/ToggleContent.svelte';
 

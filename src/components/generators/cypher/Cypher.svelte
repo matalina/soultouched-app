@@ -1,7 +1,7 @@
 <script lang="ts">
   import ToggleContent from '../../ui/ToggleContent.svelte';
   import { getRandomCypher, printCypher } from "../../../lib/cypher/cyphers";
-  import Answer from 'src/components/ui/Answer.svelte';
+  import Answer from '../../ui/Answer.svelte';
 
   let cypher = '';
   let type = 'all';

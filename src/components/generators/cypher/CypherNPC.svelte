@@ -2,7 +2,7 @@
   import { DiceRoll } from "@dice-roller/rpg-dice-roller";
   import ToggleContent from '../../ui/ToggleContent.svelte';
   import { types, creatures, descriptors, loot, motivations, rollOnTable, focusVerb, focusNoun, dispositionTable } from "../../../lib/tables";
-  import Answer from "src/components/ui/Answer.svelte";
+  import Answer from "../../ui/Answer.svelte";
 
   let npc = '';
   let level:undefined | number = null;
