@@ -26,6 +26,7 @@
     creatures,
     motivations,
   } from '../../lib/tables';
+  import Answer from '../ui/Answer.svelte';
   import ToggleContent from '../ui/ToggleContent.svelte';
 
   const options: { [key: string]: RandomTable } = {
@@ -106,7 +107,6 @@
     <Answer display={description}>
         <small class="text-xs text-blue-500">({roll.output})</small><br />
         {@html description}
-      </div>
     </Answer>
     <table class="border">
       <thead>

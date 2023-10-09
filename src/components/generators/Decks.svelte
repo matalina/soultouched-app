@@ -60,7 +60,6 @@
     {:else}
       {card.suit}
     {/if}
-    </div>
   </Answer>
 
 </ToggleContent>
