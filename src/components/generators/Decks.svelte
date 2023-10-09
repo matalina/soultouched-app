@@ -1,6 +1,7 @@
 <script>
   import { majorArcana, playingCards, shuffle, tarotDeck } from './../../lib/decks';
   import ToggleContent from "../ui/ToggleContent.svelte";
+  import Answer from '../ui/Answer.svelte';
 
 
   let decks = [
@@ -52,14 +53,14 @@
     Reshuffle All
   </button>
 
-  {#if card}
-    <div class="w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-      {#if card.number !== ''}
+
+  <Answer display={card}>
+    {#if card.number !== ''}
       {card.number} of {card.suit}
-      {:else}
+    {:else}
       {card.suit}
-      {/if}
+    {/if}
     </div>
-  {/if}
+  </Answer>
 
 </ToggleContent>

@@ -1,6 +1,7 @@
 <script lang="ts">
   import { DiceRoller } from '@dice-roller/rpg-dice-roller';
   import ToggleContent from '../ui/ToggleContent.svelte';
+  import Answer from '../ui/Answer.svelte';
 
   const roller = new DiceRoller();
   let notation = '1d20';
@@ -29,13 +30,10 @@
 
   <form on:submit|preventDefault={roll} class="flex flex-col">
     <input bind:value={notation} class="border py-2 px-3 w-full mb-2" />
-    {#if result?.output}
-    <div class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-        {result.output}
-    </div>
-    {:else}
-    <div class="py-2 px-3 mb-2">&nbsp;</div>
-    {/if}
+    <Answer display={result?.output}>
+      {result.output}
+    </Answer>
+
     {#if viewLog}
     <div class="w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
       {#each log as l}

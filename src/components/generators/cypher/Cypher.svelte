@@ -1,6 +1,7 @@
 <script lang="ts">
   import ToggleContent from '../../ui/ToggleContent.svelte';
   import { getRandomCypher, printCypher } from "../../../lib/cypher/cyphers";
+  import Answer from 'src/components/ui/Answer.svelte';
 
   let cypher = '';
   let type = 'all';
@@ -33,9 +34,7 @@
     >Generate</button>
   </div>
 
-  {#if cypher}
-    <div class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
+  <Answer display={cypher !== ''}>
       {@html cypher}
-    </div>
-  {/if}
+  </Answer>
 </ToggleContent>

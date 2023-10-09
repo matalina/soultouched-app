@@ -2,6 +2,7 @@
   import { DiceRoll } from "@dice-roller/rpg-dice-roller";
   import ToggleContent from '../../ui/ToggleContent.svelte';
   import { types, creatures, descriptors, loot, motivations, rollOnTable, focusVerb, focusNoun, dispositionTable } from "../../../lib/tables";
+  import Answer from "src/components/ui/Answer.svelte";
 
   let npc = '';
   let level:undefined | number = null;
@@ -94,9 +95,7 @@
     >Generate</button>
   </div>
 
-  {#if npc}
-    <div class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
-      {@html npc}
-    </div>
-  {/if}
+  <Answer display={npc !== ''}>
+    {@html npc}
+  </Answer>
 </ToggleContent>

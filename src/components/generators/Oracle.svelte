@@ -2,6 +2,7 @@
 import { getRandomKeywords } from "../../lib/keywords";
 import { DiceRoll } from '@dice-roller/rpg-dice-roller';
 import ToggleContent from "../ui/ToggleContent.svelte";
+import Answer from "../ui/Answer.svelte";
 
 const modifier = [
   { likelihood: 'impossible', mod: '-8' },
@@ -96,8 +97,7 @@ function reset() {
   </form>
 
   <div class="justify-center w-full">
-    {#if answer !== ''}
-    <div class="h-full w-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
+    <Answer display={answer !== ''}>
       <em><strong>Q:</strong> {oldQuestion}</em><br/>
       <small class="text-xs text-blue-500">({roll.output})</small><br/>
       <strong>{answer}</strong>
@@ -107,10 +107,7 @@ function reset() {
         <strong>GM Intrusion</strong>
         {/if}
       {/if}
-    </div>
-    {:else}
-    <div class="py-2 px-3 mb-2">&nbsp;</div>
-    {/if}
+    </Answer>
   </div>
   <div class="flex justify-center">
     <button on:click={getAnswer} class="border py-2 px-3 mb-2 mr-2 hover:bg-purple-300 bg-purple-200 text-purple-800 border-purple-800">Generate</button>

@@ -2,6 +2,7 @@
   import { DiceRoll } from "@dice-roller/rpg-dice-roller";
   import ToggleContent from '../../ui/ToggleContent.svelte';
   import { daysWeek, moonPhases, rollOnTable, timeDay, season, weather } from "../../../lib/tables";
+  import Answer from "../../ui/Answer.svelte";
 
   const statuses = [
     {
@@ -71,14 +72,12 @@
     >Generate</button>
   </div>
 
-  {#if status}
-    <div class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2">
+  <Answer display={status !== null}>
       <em class="text-xs italic">{statuses[status-1].guidance}</em><br/>
       <strong>Adventure Status:</strong> {statuses[status-1].status} {status} ({statuses[status-1].target}) <span class="text-xs italic">{roll.output}</span><br/>
       <strong>Date:</strong> {@html day.description} <span class="text-xs italic">{day.roll.output}</span> {@html time.description} <span class="text-xs italic">{time.roll.output}</span><br/>
       <strong>Season:</strong> {@html seasons.description} <span class="text-xs italic">{seasons.roll.output}</span><br/>
       <strong>Moon:</strong> {@html moon.description} <span class="text-xs italic">{moon.roll.output}</span> (Day {moonDay.total})<br/>
       <strong>Weather:</strong> {@html weathers.description} <span class="text-xs italic">{weathers.roll.output}</span><br/>
-    </div>
-  {/if}
+</Answer>
 </ToggleContent>

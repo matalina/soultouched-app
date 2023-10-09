@@ -3,6 +3,7 @@
   import ToggleContent from '../../ui/ToggleContent.svelte';
   import { getDeveloper } from '../../../lib/developer';
   import { getRandomKeywords } from '../../../lib/keywords';
+  import Answer from '../../ui/Answer.svelte';
 
   let target = '0';
   let oldTarget = '0';
@@ -80,13 +81,9 @@
     </div>
   </form>
 
-  {#if answer}
-    <div
-      class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2"
-    >
-      <em><strong>Q:</strong> {oldQuestion} ({oldTarget})</em><br />
-      <small class="text-xs text-blue-500">({roll.output})</small><br />
-      {@html answer}
-    </div>
-  {/if}
+  <Answer display={answer !== ''}>
+    <em><strong>Q:</strong> {oldQuestion} ({oldTarget})</em><br />
+    <small class="text-xs text-blue-500">({roll.output})</small><br />
+    {@html answer}
+  </Answer>
 </ToggleContent>

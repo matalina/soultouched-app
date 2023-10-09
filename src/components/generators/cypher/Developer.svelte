@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { getDeveloper } from '../../../lib/developer';
+  import Answer from 'src/components/ui/Answer.svelte';
+import { getDeveloper } from '../../../lib/developer';
   import ToggleContent from '../../ui/ToggleContent.svelte';
 
   let developer = null;
@@ -23,11 +24,7 @@
     >
   </div>
 
-  {#if developer}
-    <div
-      class="w-full h-full bg-blue-300 text-blue-900 border-blue-900 text-center py-2 px-3 mb-2"
-    >
-      {@html developer}
-    </div>
-  {/if}
+  <Answer display={developer !== null}>
+    {@html developer}
+  </Answer>
 </ToggleContent>
