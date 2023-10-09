@@ -2,8 +2,9 @@ import { DiceRoll } from "@dice-roller/rpg-dice-roller";
 import { getRandomItem, getRandomItems } from "../random";
 import { subtleCyphers } from "./subtle";
 import { manifestCyphers } from "./manifest";
+import { runeCyphers } from "../home/cyphers";
 
-const allCyphers = [...subtleCyphers, ...manifestCyphers];
+const allCyphers = [...subtleCyphers, ...manifestCyphers, ...runeCyphers];
 
 export function getRandomCyphers(count = 3, type = 'all') {
   let cyphers;
@@ -13,6 +14,9 @@ export function getRandomCyphers(count = 3, type = 'all') {
       break;
     case 'manifest':
       cyphers = manifestCyphers;
+      break;
+    case 'rune':
+      cyphers = runeCyphers;
       break;
     case 'all':
     default:
@@ -30,6 +34,9 @@ export function getRandomCypher(type = 'all') {
       break;
     case 'manifest':
       cyphers = manifestCyphers;
+      break;
+    case 'rune':
+      cyphers = runeCyphers;
       break;
     case 'all':
     default:

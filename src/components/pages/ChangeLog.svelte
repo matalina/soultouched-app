@@ -97,4 +97,11 @@
 * Removed character gen and combat tracker
   `}
   />
+  <Markdown
+    small={true}
+    markdown={`
+#### 1.231009.02
+* Added runes to cyphers
+  `}
+  />
 </div>

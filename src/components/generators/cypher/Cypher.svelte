@@ -22,6 +22,7 @@
       <option value="all">All</option>
       <option value="subtle">Subtle</option>
       <option value="manifest">Manifest</option>
+      <option value="rune">Rune</option>
     </select>
   </label>
 
