@@ -1,8 +1,8 @@
 <script lang="ts">
   import { DiceRoll } from "@dice-roller/rpg-dice-roller";
-  import ToggleContent from '../../ui/ToggleContent.svelte';
-  import { getRandomKeywords } from '../../../lib/keywords';
-  import { getRandomCyphers, printCypher } from "../../../lib/cypher/cyphers";
+  import ToggleContent from '../components/ui/ToggleContent.svelte';
+  import { getRandomKeywords } from '../lib/keywords';
+  import { getRandomCyphers, printCypher } from "../lib/cypher/cyphers";
 
   const gamemaster = [
     {

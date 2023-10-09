@@ -112,4 +112,11 @@
 * Added copy to markdown button on Answers widget
 `}
 />
+<Markdown
+small={true}
+markdown={`
+#### 1.231009.04
+* Added Map Tile generation
+`}
+/>
 </div>

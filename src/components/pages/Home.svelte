@@ -9,6 +9,7 @@
   import Cypher from '../generators/cypher/Cypher.svelte';
   import Developer from '../generators/cypher/Developer.svelte';
   import Decks from '../generators/Decks.svelte';
+  import MapTile from '../generators/MapTile.svelte';
 </script>
 
 <main class="md:flex">
@@ -21,6 +22,7 @@
     <Status />
     <CypherNpc />
     <Cypher />
+    <MapTile />
     <RandomTables />
     <Keywords />
   </div>

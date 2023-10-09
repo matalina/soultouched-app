@@ -1,7 +1,7 @@
 <script>
-  import ToggleContent from '../../../components/ui/ToggleContent.svelte';
-  import MiniCreateCreature from './tracker/MiniCreateCreature.svelte';
-  import MiniParticipant from './tracker/MiniParticipant.svelte';
+  import ToggleContent from '../../components/ui/ToggleContent.svelte';
+  import MiniCreateCreature from './MiniCreateCreature.svelte';
+  import MiniParticipant from './MiniParticipant.svelte';
 
   let step = 1;
   let newCreature = false;

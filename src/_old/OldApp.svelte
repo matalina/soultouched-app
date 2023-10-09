@@ -1,11 +1,11 @@
 <script lang="ts">
 import Calendar from './components/widgets/Calendar.svelte';
-import RandomEncounters from "./components/realm/RandomEncounters.svelte";
-import Oracle from "./components/generators/Oracle.svelte";
+import RandomEncounters from "./realm/RandomEncounters.svelte";
+import Oracle from "../components/generators/Oracle.svelte";
 import Today from "./components/widgets/Today.svelte";
-import RealmDate from './components/realm/RealmDate.svelte';
-import Keywords from './components/generators/Keywords.svelte';
-import Campaign from './components/realm/Campaign.svelte';
+import RealmDate from './realm/RealmDate.svelte';
+import Keywords from '../components/generators/Keywords.svelte';
+import Campaign from './realm/Campaign.svelte';
 import { onMount } from 'svelte';
 
 let tab = "random";

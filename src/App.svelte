@@ -1,10 +1,8 @@
-<script lang="ts">
+<script>
   import { Router, Route, Link } from 'svelte-routing';
   import Home from './components/pages/Home.svelte';
   import Disclaimer from './components/ui/Disclaimer.svelte';
-  import Character from './components/pages/Character.svelte';
   import ChangeLog from './components/pages/ChangeLog.svelte';
-  import Combat from './components/pages/Combat.svelte';
 
   export let url = '';
 </script>
@@ -20,32 +18,14 @@
             <i class="fa-solid fa-house" />
           </div>
         </Link>
-
-        <!--Link to="/character">
-          <div
-            class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
-          >
-            <i class="fa-solid fa-id-card" />
-          </div>
-        </!--Link>
-
-        <Link-- to="/combat">
-          <div
-            class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
-          >
-            <i class="fa-solid fa-swords" />
-          </div>
-        </Link-->
       </div>
       <Link class="text-xs text-gray-500 p-2" to="/change-log">
-        v1.231009.03
+        v1.231009.04
       </Link>
     </nav>
     <section>
       <Route path="/" component={Home} />
-      <!--Route path="/character" component={Character} /-->
       <Route path="/change-log" component={ChangeLog} />
-      <!--Route path="/combat" component={Combat} /-->
     </section>
     <Disclaimer />
   </Router>
