@@ -1,63 +1,50 @@
 <script type="ts">
-  import { ascendantSpecies, bloodlines, chaosAura, elemental, manifestationCount, shiftTable } from '../../lib/home/tables';
+  import { chaosEffect, compass, district, encounter, faction, hexDetail } from '../../../lib/home/tables';
   import {
     rollOnTable,
-    creatureHealth,
     dispositionTable,
-    environmentFeatures,
     loot,
-    mapConnections,
-    nearbyLocationEven,
-    nearbyLocationOdd,
-    outerSpace,
     questTypes,
     RandomTable,
-    urbanDistricts,
     weather,
     season,
     daysWeek,
     timeDay,
     moonPhases,
-    wildness,
     types,
     descriptors,
     focusVerb,
     focusNoun,
     creatures,
     motivations,
-  } from '../../lib/tables';
-  import Answer from '../ui/Answer.svelte';
-  import ToggleContent from '../ui/ToggleContent.svelte';
+  } from '../../../lib/tables';
+  import Answer from '../../ui/Answer.svelte';
+  import ToggleContent from '../../ui/ToggleContent.svelte';
 
   const options: { [key: string]: RandomTable } = {
-    [shiftTable.name]: shiftTable,
-    [nearbyLocationEven.name]: nearbyLocationEven,
-    [nearbyLocationOdd.name]: nearbyLocationOdd,
+    [chaosEffect.name]: chaosEffect,
+    [compass.name]: compass,
     [questTypes.name]: questTypes,
-    [creatureHealth.name]: creatureHealth,
     [loot.name]: loot,
-    [manifestationCount.name]: manifestationCount,
-    [dispositionTable.name]: dispositionTable,
-    [ascendantSpecies.name]: ascendantSpecies,
-    [bloodlines.name]: bloodlines,
-    [mapConnections.name]: mapConnections,
-    [urbanDistricts.name]: urbanDistricts,
-    [wildness.name]: wildness,
-    [outerSpace.name]: outerSpace,
-    [environmentFeatures.name]: environmentFeatures,
+
+    [faction.name]: faction,
+    [district.name]: district,
+    [hexDetail.name]: hexDetail,
+    [encounter.name]: encounter,
+
     [weather.name]: weather,
     [season.name]: season,
     [daysWeek.name]: daysWeek,
     [timeDay.name]: timeDay,
     [moonPhases.name]: moonPhases,
-    [chaosAura.name]: chaosAura,
-    [elemental.name]: elemental,
+
     [types.name]: types,
     [descriptors.name]: descriptors,
     [focusVerb.name]: focusVerb,
     [focusNoun.name]:focusNoun,
     [creatures.name]: creatures,
     [motivations.name]: motivations,
+    [dispositionTable.name]: dispositionTable,
   };
 
   let selectedTable = '';
@@ -110,10 +97,3 @@
     {/if}
   {/if}
 </ToggleContent>
-
-<style lang="postcss">
-  td,
-  th {
-    @apply px-3 py-2 border;
-  }
-</style>

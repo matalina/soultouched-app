@@ -30,7 +30,7 @@ export function getRandomCypher(type = 'all') {
   let cyphers;
   switch (type) {
     case 'subtle':
-      cyphers = allCyphers;
+      cyphers = subtleCyphers;
       break;
     case 'manifest':
       cyphers = manifestCyphers;

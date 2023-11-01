@@ -119,4 +119,13 @@ markdown={`
 * Added Map Tile generation
 `}
 />
+<Markdown
+small={true}
+markdown={`
+#### 1.231101.01
+* Fixed Subtle Random Cypher Generation
+* Added New Everlight tables
+* Removed Random Table table display to save room
+`}
+/>
 </div>
