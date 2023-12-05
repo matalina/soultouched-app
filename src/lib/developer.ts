@@ -3,7 +3,7 @@ import { getRandomKeywords } from "./keywords";
 import { getRandomCyphers, printCypher } from "./cypher/cyphers";
 
 const developer = [
-  () => '<strong>Automatic Failure</strong>',
+  () => `<strong>GM Intrusion: No XP</strong><br/>${getRandomKeywords(3).join(', ')}`,,
   () => `<strong>And...</strong><br/>${getRandomKeywords(3).join(', ')}`,
   () => 'None',
   () => `<strong>And...</strong><br/>${getRandomKeywords(3).join(', ')}`,
@@ -15,14 +15,14 @@ const developer = [
   randomCyphers,
   randomCyphers,
   () => `<strong>GM Intrusion: +1XP</strong><br/>${getRandomKeywords(3).join(', ')}`,
-  () => `<strong>PC Inhibitor</strong><br/>${getRandomKeywords(3).join(', ')}`,
+  () => `<strong>And...</strong><br/>${getRandomKeywords(3).join(', ')}`,
   () => 'None',
-  () => `<strong>PC Enabler</strong><br/>${getRandomKeywords(3).join(', ')}`,
+  () => `<strong>And...</strong><br/>${getRandomKeywords(3).join(', ')}`,
   () => 'None',
-  () => `<strong>NPC Inhibitor</strong><br/>${getRandomKeywords(3).join(', ')}`,
+  () => `<strong>But...</strong><br/>${getRandomKeywords(3).join(', ')}`,
   () => 'None',
-  () => `<strong>NPC Enabler</strong><br/>${getRandomKeywords(3).join(', ')}`,
-  () => '<strong>Automatic Success</strong>',
+  () => `<strong>But...</strong><br/>${getRandomKeywords(3).join(', ')}`,
+  () => () => `<strong>GM Intrusion: +1XP</strong><br/>${getRandomKeywords(3).join(', ')}`,,
 ];
 
 function randomCyphers(): string {

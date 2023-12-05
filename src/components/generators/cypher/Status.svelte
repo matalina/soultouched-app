@@ -48,11 +48,11 @@
   function generate() {
     roll = new DiceRoll('1d6');
     status = roll.total;
-    day = rollOnTable(daysWeek);
+    /* day = rollOnTable(daysWeek);
     time = rollOnTable(timeDay);
     seasons = rollOnTable(season);
     moon = rollOnTable(moonPhases);
-    moonDay = new DiceRoll('1d4');
+    moonDay = new DiceRoll('1d4'); */
     weathers = rollOnTable(weather);
 
     while (moonDay.total === 4) {
@@ -74,9 +74,6 @@
   {#if status}
   <Answer answer={`<em class="text-xs italic">${statuses[status-1].guidance}</em><br/>
     <strong>Adventure Status:</strong> ${statuses[status-1].status} ${status} (${statuses[status-1].target}) <span class="text-xs italic">${roll.output}</span><br/>
-    <strong>Date:</strong> ${day.description} <span class="text-xs italic">${day.roll.output}</span> ${time.description} <span class="text-xs italic">${time.roll.output}</span><br/>
-    <strong>Season:</strong> ${seasons.description} <span class="text-xs italic">${seasons.roll.output}</span><br/>
-    <strong>Moon:</strong> ${moon.description} <span class="text-xs italic">${moon.roll.output}</span> (Day ${moonDay.total})<br/>
     <strong>Weather:</strong> ${weathers.description} <span class="text-xs italic">${weathers.roll.output}</span><br/>`} />
   {/if}
 </ToggleContent>

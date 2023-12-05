@@ -52,7 +52,7 @@ function getAnswer() {
     const range = oracle[i];
     if(ask >= range[0] && ask <= range[1]) answer = range[2].toString();
   }
-  if (answer.includes('and') || answer.includes('but')) {
+  if (answer.includes('and') || answer.includes('but') || answer.toLowerCase().includes('maybe')) {
     keywords = [...getRandomKeywords()];
     if (gmIntrusion) {
       const intrusion = new DiceRoll('1d20');
@@ -102,7 +102,7 @@ function reset() {
       <small class="text-xs text-blue-500">(${roll.output})</small><br/>
       <strong>${answer}</strong>
       ${isAndOrBut ? `${keywords.join(', ')}<br/>`: ''}
-      ${isAndOrBut && isGMIntrusion ? `<strong>GM Intrusion</strong>`: ''}`} />
+      ${isAndOrBut && isGMIntrusion ? `<strong>GM Intrusion: +1XP</strong>`: ''}`} />
     {/if}
   </div>
   <div class="flex justify-center">

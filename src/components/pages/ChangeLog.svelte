@@ -128,4 +128,13 @@ markdown={`
 * Removed Random Table table display to save room
 `}
 />
+<Markdown
+small={true}
+markdown={`
+#### 1.231205.01
+* Updated Developer output
+* Updated Adventure Status output
+* Removed Everlight and added Explorers
+`}
+/>
 </div>
