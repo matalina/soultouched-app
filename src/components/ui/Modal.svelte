@@ -21,7 +21,7 @@ function close() {
 </script>
 
 {#if open}
-<div class="absolute top-0 left-0 inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full" on:click={close}></div>
+<div class="absolute top-0 left-0 inset-0" on:click={close}></div>
 
 <div class="flex">
   <div

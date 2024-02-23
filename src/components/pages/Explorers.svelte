@@ -1,6 +1,6 @@
 <script lang="ts">
   import Oracle from '../generators/Oracle.svelte';
-  import Keywords from '../generators/Keywords.svelte';
+  import Keywords from '../generators/Keyword.svelte';
   import DiceRoller from '../generators/DiceRoller.svelte';
   import CypherNpc from '../generators/cypher/CypherNPC.svelte';
   import Tasks from '../generators/cypher/Tasks.svelte';

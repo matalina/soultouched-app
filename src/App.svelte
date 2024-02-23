@@ -1,9 +1,7 @@
 <script>
+  import InspirationCard from './components/pages/InspirationCard.svelte';
   import { Router, Route, Link } from 'svelte-routing';
-  import Home from './components/pages/Home.svelte';
   import Disclaimer from './components/ui/Disclaimer.svelte';
-  import ChangeLog from './components/pages/ChangeLog.svelte';
-  import Explorers from './components/pages/Explorers.svelte';
 
   export let url = '';
 </script>
@@ -16,25 +14,17 @@
           <div
             class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
           >
-            <i class="fa-solid fa-house" />
+          <i class="fa-regular fa-cards-blank"></i>
           </div>
         </Link>
-        <Link to="/explorers">
-          <div
-            class="py-2 px-3 border border-gray-900 text-gray-900 mr-2 focus:bg-gray-200 hover:bg-gray-200"
-          >
-          <i class="fa-sharp fa-regular fa-hexagon-image"></i>
-          </div>
-        </Link>
+
       </div>
       <Link class="text-xs text-gray-500 p-2" to="/change-log">
-        v1.231205.01
+        v0.00000000.01
       </Link>
     </nav>
     <section>
-      <Route path="/" component={Home} />
-      <Route path="/explorers" component={Explorers} />
-      <Route path="/change-log" component={ChangeLog} />
+      <Route path="/" component={InspirationCard} />
     </section>
     <Disclaimer />
   </Router>
