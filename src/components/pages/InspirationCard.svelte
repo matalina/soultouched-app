@@ -8,6 +8,9 @@
   import Color from "../generators/Color.svelte";
   import Die from "../generators/Die.svelte";
   import Moon from "../generators/Moon.svelte";
+  import Weather from "../generators/Weather.svelte";
+  import Terrain from "../generators/Terrain.svelte";
+  import Landmarks from "../generators/Landmarks.svelte";
 
   let question = '';
   let inputBox;
@@ -66,8 +69,23 @@
         <Oracle probability={-3} bind:this={generators.unlikelyOracle}/>
       </div>
     </div>
-    <div class="w-1/3">
-      <Moon bind:this={generators.moon}/>
+    <div class="w-1/3 mt-2">
+      <div class="flex gap-2">
+        <div class="w-1/2">
+          <Moon bind:this={generators.moon}/>
+        </div>
+        <div class="w-1/2">
+          <Weather bind:this={generators.weather}/>
+        </div>
+      </div>
+      <div class="flex gap-2 mt-2">
+        <div class="w-1/2">
+          <Terrain bind:this={generators.terrain}/>
+        </div>
+        <div class="w-1/2">
+          <Landmarks bind:this={generators.landmarks}/>
+        </div>
+      </div>
     </div>
 
   </div>
