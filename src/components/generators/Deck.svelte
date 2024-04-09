@@ -47,7 +47,11 @@ onMount(() => {
         {/if}
       </div>
       <div>
-        <button class="border py-2 px-3" on:click={draw}>Draw</button>
+        {#if count === 0}
+          <button class="border py-2 px-3" on:click={reroll}>Shuffle</button>
+        {:else}
+          <button class="border py-2 px-3" on:click={draw}>Draw</button>
+        {/if}
       </div>
     </div>
   </div>
